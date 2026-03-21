@@ -22,6 +22,18 @@
     <Filter Include="Исходные файлы\Submission">
       <UniqueIdentifier>{702c4f1d-562c-46c3-b03c-9f5f17187762}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\MailQueue">
+      <UniqueIdentifier>{41c915aa-cde1-4cd2-a64a-38b612c1b6b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\GradeTable">
+      <UniqueIdentifier>{b1f0c96a-0ed9-404b-a2df-56cc9d60959f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Teacher">
+      <UniqueIdentifier>{fc63e74a-47c9-4dda-9020-19d91f6b6a80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Simulation">
+      <UniqueIdentifier>{a01dde82-d1e1-411b-9691-d1d721be3afb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +57,21 @@
     <ClCompile Include="Submission.cpp">
       <Filter>Исходные файлы\Submission</Filter>
     </ClCompile>
+    <ClCompile Include="MailQueue.cpp">
+      <Filter>Исходные файлы\MailQueue</Filter>
+    </ClCompile>
+    <ClCompile Include="GradeTable.cpp">
+      <Filter>Исходные файлы\GradeTable</Filter>
+    </ClCompile>
+    <ClCompile Include="Teacher.cpp">
+      <Filter>Исходные файлы\Teacher</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulation.cpp">
+      <Filter>Исходные файлы\Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="Student.cpp">
+      <Filter>Исходные файлы\Student</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="QuadraticEquation.h">
@@ -67,6 +94,18 @@
     </ClInclude>
     <ClInclude Include="Submission.h">
       <Filter>Исходные файлы\Submission</Filter>
+    </ClInclude>
+    <ClInclude Include="MailQueue.h">
+      <Filter>Исходные файлы\MailQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="GradeTable.h">
+      <Filter>Исходные файлы\GradeTable</Filter>
+    </ClInclude>
+    <ClInclude Include="Teacher.h">
+      <Filter>Исходные файлы\Teacher</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulation.h">
+      <Filter>Исходные файлы\Simulation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

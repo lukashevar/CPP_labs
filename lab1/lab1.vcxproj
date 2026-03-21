@@ -126,19 +126,28 @@
     <ClCompile Include="AverageStudent.cpp" />
     <ClCompile Include="BadStudent.cpp" />
     <ClCompile Include="GoodStudent.cpp" />
+    <ClCompile Include="GradeTable.cpp" />
+    <ClCompile Include="MailQueue.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QuadraticEquation.cpp" />
+    <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="Solution.cpp" />
+    <ClCompile Include="Student.cpp" />
     <ClCompile Include="Submission.cpp" />
+    <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AverageStudent.h" />
     <ClInclude Include="BadStudent.h" />
     <ClInclude Include="GoodStudent.h" />
+    <ClInclude Include="GradeTable.h" />
+    <ClInclude Include="MailQueue.h" />
     <ClInclude Include="QuadraticEquation.h" />
+    <ClInclude Include="Simulation.h" />
     <ClInclude Include="Solution.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Submission.h" />
+    <ClInclude Include="Teacher.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
