@@ -20,3 +20,7 @@ Solution QuadraticEquation::solve() const{
 		return Solution(0, {});
 	}
 }
+
+std::vector<double> QuadraticEquation::getEquation() const {
+	return { a, b, c };
+}

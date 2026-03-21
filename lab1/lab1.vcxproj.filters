@@ -16,6 +16,12 @@
     <Filter Include="Исходные файлы\QuadraticEquation">
       <UniqueIdentifier>{46f2f7a2-c1ef-4668-8dd5-a6bdb4787f3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Student">
+      <UniqueIdentifier>{f0b3b644-d404-4ac0-af72-a7a1562faa22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Submission">
+      <UniqueIdentifier>{702c4f1d-562c-46c3-b03c-9f5f17187762}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,6 +33,18 @@
     <ClCompile Include="Solution.cpp">
       <Filter>Исходные файлы\QuadraticEquation</Filter>
     </ClCompile>
+    <ClCompile Include="GoodStudent.cpp">
+      <Filter>Исходные файлы\Student</Filter>
+    </ClCompile>
+    <ClCompile Include="BadStudent.cpp">
+      <Filter>Исходные файлы\Student</Filter>
+    </ClCompile>
+    <ClCompile Include="AverageStudent.cpp">
+      <Filter>Исходные файлы\Student</Filter>
+    </ClCompile>
+    <ClCompile Include="Submission.cpp">
+      <Filter>Исходные файлы\Submission</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="QuadraticEquation.h">
@@ -34,6 +52,21 @@
     </ClInclude>
     <ClInclude Include="Solution.h">
       <Filter>Исходные файлы\QuadraticEquation</Filter>
+    </ClInclude>
+    <ClInclude Include="Student.h">
+      <Filter>Исходные файлы\Student</Filter>
+    </ClInclude>
+    <ClInclude Include="GoodStudent.h">
+      <Filter>Исходные файлы\Student</Filter>
+    </ClInclude>
+    <ClInclude Include="BadStudent.h">
+      <Filter>Исходные файлы\Student</Filter>
+    </ClInclude>
+    <ClInclude Include="AverageStudent.h">
+      <Filter>Исходные файлы\Student</Filter>
+    </ClInclude>
+    <ClInclude Include="Submission.h">
+      <Filter>Исходные файлы\Submission</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

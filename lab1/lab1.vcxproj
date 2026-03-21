@@ -123,13 +123,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AverageStudent.cpp" />
+    <ClCompile Include="BadStudent.cpp" />
+    <ClCompile Include="GoodStudent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="QuadraticEquation.cpp" />
     <ClCompile Include="Solution.cpp" />
+    <ClCompile Include="Submission.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AverageStudent.h" />
+    <ClInclude Include="BadStudent.h" />
+    <ClInclude Include="GoodStudent.h" />
     <ClInclude Include="QuadraticEquation.h" />
     <ClInclude Include="Solution.h" />
+    <ClInclude Include="Student.h" />
+    <ClInclude Include="Submission.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
