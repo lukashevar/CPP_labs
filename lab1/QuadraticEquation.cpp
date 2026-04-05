@@ -22,6 +22,3 @@ Solution QuadraticEquation::solve() const{
 	}
 }
 
-std::vector<double> QuadraticEquation::getEquation() const {
-	return { a, b, c };
-}

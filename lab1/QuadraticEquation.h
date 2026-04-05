@@ -9,7 +9,5 @@ private:
 public:
 	QuadraticEquation(double a, double b, double c);
 
-	std::vector<double> getEquation() const;
-
 	Solution solve() const;
 };
