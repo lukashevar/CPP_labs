@@ -1,12 +1,12 @@
 #include "GradeTable.h"
 #include <iostream>
 
-// Увеличить счётчик успешных решений
+
 void GradeTable::increaseScore(const std::string& studentName) {
     table[studentName]++;
 }
 
-// Вывести таблицу успеваемости
+
 void GradeTable::print() const {
     std::cout << "=== Grade Table ===\n";
 

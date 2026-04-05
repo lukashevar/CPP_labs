@@ -6,24 +6,24 @@
 #include <fstream>
 #include <iostream>
 
-// Конструктор
+
 Simulation::Simulation()
-    : teacher(mailQueue)   // ВАЖНО: teacher получает ссылку на очередь
+    : teacher(mailQueue)   
 {
-    // создаём студентов
+    
     students.push_back(new GoodStudent("Alice"));
     students.push_back(new AverageStudent("Bob"));
     students.push_back(new BadStudent("Charlie"));
 }
 
-// Деструктор (освобождаем память)
+/
 Simulation::~Simulation() {
     for (Student* s : students) {
         delete s;
     }
 }
 
-// Загрузка уравнений из файла
+
 void Simulation::loadEquations(const std::string& filename) {
     std::ifstream file(filename);
 
@@ -41,10 +41,10 @@ void Simulation::loadEquations(const std::string& filename) {
     file.close();
 }
 
-// Запуск симуляции
+
 void Simulation::run() {
 
-    // Каждый студент решает каждое уравнение
+    
     for (Student* student : students) {
         for (const QuadraticEquation& eq : equations) {
 
@@ -55,9 +55,9 @@ void Simulation::run() {
         }
     }
 
-    // Преподаватель проверяет всё
+    
     teacher.checkAll();
 
-    // Публикуем результаты
+    
     teacher.publishResults();
 }

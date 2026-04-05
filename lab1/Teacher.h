@@ -11,6 +11,6 @@ private:
 public:
     Teacher(MailQueue& queue);
 
-    void checkAll();       // проверяет все письма
+    void checkAll();       
     void publishResults() const;
 };
