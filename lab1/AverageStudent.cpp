@@ -1,5 +1,4 @@
 #include <cstdlib> 
-#include <ctime> 
 #include "AverageStudent.h"
 
 AverageStudent::AverageStudent(const std::string& name)
