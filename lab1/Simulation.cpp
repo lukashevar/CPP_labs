@@ -16,7 +16,7 @@ Simulation::Simulation()
     students.push_back(new BadStudent("Charlie"));
 }
 
-/
+
 Simulation::~Simulation() {
     for (Student* s : students) {
         delete s;
