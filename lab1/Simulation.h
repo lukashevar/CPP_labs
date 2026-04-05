@@ -7,10 +7,10 @@
 
 class Simulation {
 private:
+    MailQueue mailQueue;
+    Teacher teacher;
     std::vector<Student*> students;
     std::vector<QuadraticEquation> equations;
-    Teacher teacher;
-    MailQueue mailQueue;
 
 public:
     Simulation();
