@@ -13,5 +13,6 @@ public:
 	virtual ~Student() = default;
 
 	virtual Solution solve(const QuadraticEquation& qe) = 0;
-	std::string getName() const;
+
+	const std::string& getName() const;
 };

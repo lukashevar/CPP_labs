@@ -12,6 +12,6 @@ const Solution& Submission::getSolution() const {
 	return solution;
 }
 
-const std::string Submission::getStudentName(){
+const std::string& Submission::getStudentName() const{
 	return studentName;
 }

@@ -14,5 +14,5 @@ public:
 
 	const QuadraticEquation& getEquation() const;
 	const Solution& getSolution() const;
-	const std::string getStudentName();
+	const std::string& getStudentName() const;
 };
