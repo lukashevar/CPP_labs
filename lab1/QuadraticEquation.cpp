@@ -6,6 +6,10 @@ QuadraticEquation::QuadraticEquation(double a, double b, double c)
 	: a(a), b(b), c(c) {};
 
 Solution QuadraticEquation::solve() const{
+	if (a < EPS) {
+		double x = -c / b;
+		return Solution(1, { x });
+	}
 	double D = b * b - 4 * a * c;
 
 	if (D > 0) {
