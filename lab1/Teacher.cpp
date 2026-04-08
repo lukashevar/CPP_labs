@@ -14,10 +14,10 @@ void Teacher::checkAll() {
         const QuadraticEquation& eq = sub.getEquation();
         const Solution& studentSol = sub.getSolution();
 
-        
+        gradeTable.registerStudent(sub.getStudentName());
+
         Solution correctSol = eq.solve();
 
-        
         if (studentSol.isEqual(correctSol)) {
             gradeTable.increaseScore(sub.getStudentName());
         }

@@ -8,5 +8,6 @@ private:
 
 public:
 	void increaseScore(const std::string& studentName);
+	void registerStudent(const std::string& studentName);
 	void print() const;
 };
