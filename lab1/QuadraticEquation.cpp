@@ -6,7 +6,7 @@ QuadraticEquation::QuadraticEquation(double a, double b, double c)
 	: a(a), b(b), c(c) {};
 
 Solution QuadraticEquation::solve() const{
-	if (a < EPS) {
+	if (std::abs(a) < EPS) {
 		double x = -c / b;
 		return Solution(1, { x });
 	}
