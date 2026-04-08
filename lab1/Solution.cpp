@@ -25,4 +25,3 @@ bool Solution::isEqual(const Solution& other) const{
 	}
 	return true;
 }
-

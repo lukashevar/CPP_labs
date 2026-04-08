@@ -18,4 +18,3 @@ Submission MailQueue::getNextSubmission() {
 bool MailQueue::isEmpty() const {
 	return queueSubs.empty();
 }
-

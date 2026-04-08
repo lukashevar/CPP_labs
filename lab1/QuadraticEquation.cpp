@@ -25,4 +25,3 @@ Solution QuadraticEquation::solve() const{
 		return Solution(0, {});
 	}
 }
-
