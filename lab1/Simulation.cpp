@@ -11,16 +11,9 @@ Simulation::Simulation()
     : teacher(mailQueue)   
 {
     
-    students.push_back(new GoodStudent("Alice"));
-    students.push_back(new AverageStudent("Bob"));
-    students.push_back(new BadStudent("Charlie"));
-}
-
-
-Simulation::~Simulation() {
-    for (Student* s : students) {
-        delete s;
-    }
+    students.push_back(std::make_unique<GoodStudent>("Alice"));
+    students.push_back(std::make_unique<AverageStudent>("Bob"));
+    students.push_back(std::make_unique<BadStudent>("Charlie"));
 }
 
 
@@ -45,7 +38,7 @@ void Simulation::loadEquations(const std::string& filename) {
 void Simulation::run() {
 
     
-    for (Student* student : students) {
+    for (const auto& student : students) {
         for (const QuadraticEquation& eq : equations) {
 
             Solution sol = student->solve(eq);
