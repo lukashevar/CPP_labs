@@ -5,7 +5,6 @@ enum class GemColor {
 	Green,
 	Blue,
 	Yellow,
-	Purple,
 	Black
 };
 

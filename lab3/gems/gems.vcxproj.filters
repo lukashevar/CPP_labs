@@ -13,10 +13,51 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\Cell">
+      <UniqueIdentifier>{2d692dfe-d287-4fdb-89e6-7f948bbf15bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Board">
+      <UniqueIdentifier>{2f7c26c4-8c90-48f9-bab4-edd33a7f3377}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Bonus">
+      <UniqueIdentifier>{18758eca-b314-44f3-bf46-0fb475a0e2d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Game">
+      <UniqueIdentifier>{5d270230-6dfd-4db7-aff1-9c1306b54b9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="Cell.cpp">
+      <Filter>Исходные файлы\Cell</Filter>
+    </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Исходные файлы\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="Bonus.cpp">
+      <Filter>Исходные файлы\Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Исходные файлы\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cell.h">
+      <Filter>Исходные файлы\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Исходные файлы\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="Bonus.h">
+      <Filter>Исходные файлы\Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Исходные файлы\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
