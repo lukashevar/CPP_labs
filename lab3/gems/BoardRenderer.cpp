@@ -1,0 +1,66 @@
+#include "BoardRenderer.h"
+#include "Cell.h"
+#include "Constants.h"
+
+
+sf::Color BoardRenderer::toSFMLColor(GemColor color) {
+	switch (color) {
+	case GemColor::Red:
+		return sf::Color::Red;
+
+	case GemColor::Green:
+		return sf::Color::Green;
+
+	case GemColor::Blue:
+		return sf::Color::Blue;
+
+	case GemColor::Yellow:
+		return sf::Color::Yellow;
+
+	case GemColor::Black:
+	default:
+		return sf::Color::Black;
+	}
+}
+
+
+void BoardRenderer::draw(sf::RenderWindow& window, const Board& board) {
+	sf::RectangleShape rect(
+		sf::Vector2f(
+			static_cast<float>(Constants::CELL_SIZE),
+			static_cast<float>(Constants::CELL_SIZE)
+		)
+	);
+
+	rect.setOutlineThickness(1.f);
+	rect.setOutlineColor(sf::Color::Black);
+
+	for (int row = 0; row < board.getRows(); ++row) {
+		for (int col = 0; col < board.getCols(); ++col) {
+			const Cell& cell = board.getCell(row, col);
+
+			rect.setPosition(
+				static_cast<float>(col * Constants::CELL_SIZE),
+				static_cast<float>(row * Constants::CELL_SIZE)
+			);
+
+			rect.setFillColor(toSFMLColor(cell.color));
+
+			window.draw(rect);
+		}
+	}
+}
+
+
+bool BoardRenderer::pixelToCell(
+	const Board& board,
+	int x,
+	int y,
+	int& row,
+	int& col
+) {
+	col = x / Constants::CELL_SIZE;
+	row = y / Constants::CELL_SIZE;
+
+	return board.isValidPosition(row, col);
+}
