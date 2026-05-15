@@ -22,6 +22,8 @@ public:
 	int getRows() const;
 	int getCols() const;
 
+	GemColor generateRandomColor() const;
+
 private:
 	GemColor getRandomColor() const;
 	int m_rows;

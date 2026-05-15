@@ -102,3 +102,7 @@ void Board::draw(sf::RenderWindow& window) const {
 		}
 	}
 }
+
+GemColor Board::generateRandomColor() const {
+	return getRandomColor();
+}
