@@ -2,8 +2,8 @@
 #include "Board.h"
 
 int main() {
-	const int rows = 8;
-	const int cols = 8;
+	const int rows = 10;
+	const int cols = 10;
 	const float cellSize = 64.f;
 
 	sf::RenderWindow window(
