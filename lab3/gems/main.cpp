@@ -1,29 +1,7 @@
-#include <SFML/Graphics.hpp>
-#include "Board.h"
+#include "Game.h"
 
 int main() {
-	const int rows = 10;
-	const int cols = 10;
-	const float cellSize = 64.f;
-
-	sf::RenderWindow window(
-		sf::VideoMode(cols * cellSize, rows * cellSize),
-		"GEMS"
-	);
-
-	Board board(rows, cols);
-
-	while (window.isOpen()) {
-		sf::Event event;
-		while (window.pollEvent(event)) {
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-
-		window.clear();
-		board.draw(window);
-		window.display();
-	}
-
+	Game game;
+	game.run();
 	return 0;
 }

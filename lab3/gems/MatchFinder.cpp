@@ -1,5 +1,4 @@
 #include "MatchFinder.h"
-#include "Board.h"
 
 void MatchFinder::clearMarks(Board& board) {
 	for (int r = 0; r < board.getRows(); ++r) {
@@ -91,6 +90,6 @@ bool MatchFinder::findVerticalMatches(Board& board) {
 
 			startRow = endRow;
 		}
-		return found;
 	}
+	return found;
 }

@@ -25,6 +25,9 @@
     <Filter Include="Исходные файлы\Game">
       <UniqueIdentifier>{5d270230-6dfd-4db7-aff1-9c1306b54b9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Animation">
+      <UniqueIdentifier>{1d137d69-4399-4b9c-906e-a211b391988c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,6 +45,18 @@
     <ClCompile Include="Game.cpp">
       <Filter>Исходные файлы\Game</Filter>
     </ClCompile>
+    <ClCompile Include="MatchFinder.cpp">
+      <Filter>Исходные файлы\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardProccessor.cpp">
+      <Filter>Исходные файлы\Board</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardRenderer.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Исходные файлы\Animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -58,6 +73,18 @@
     </ClInclude>
     <ClInclude Include="Constants.h">
       <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchFinder.h">
+      <Filter>Исходные файлы\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardProcessor.h">
+      <Filter>Исходные файлы\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardRenderer.h">
+      <Filter>Исходные файлы\Board</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Исходные файлы\Animation</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
