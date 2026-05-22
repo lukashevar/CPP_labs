@@ -64,3 +64,28 @@ bool BoardRenderer::pixelToCell(
 
 	return board.isValidPosition(row, col);
 }
+
+
+sf::Vector2f BoardRenderer::celltoPixel(int row, int col) {
+	return {
+		static_cast<float>(col * Constants::CELL_SIZE),
+		static_cast<float>(row * Constants::CELL_SIZE)
+	};
+}
+
+
+void BoardRenderer::drawGem(sf::RenderWindow& window, GemColor color, sf::Vector2f& position) {
+	sf::RectangleShape rect(
+		sf::Vector2f(
+			static_cast<float>(Constants::CELL_SIZE),
+			static_cast<float>(Constants::CELL_SIZE)
+		)
+	);
+
+	rect.setPosition(position);
+	rect.setFillColor(toSFMLColor(color));
+	rect.setOutlineThickness(1.f);
+	rect.setOutlineColor(sf::Color::Black);
+
+	window.draw(rect);
+}
