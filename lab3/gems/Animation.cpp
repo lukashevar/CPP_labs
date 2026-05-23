@@ -1,12 +1,14 @@
 #include "Animation.h"
 
 Animation::Animation(
+	AnimationType type,
 	GemColor color,
 	const sf::Vector2f& from,
 	const sf::Vector2f& to,
 	float duration
 )
-	: m_color(color)
+	: m_type(type)
+	, m_color(color)
 	, m_from(from)
 	, m_to(to)
 	, m_duration(duration)
@@ -37,4 +39,19 @@ sf::Vector2f Animation::getCurrentPosition() const {
 
 GemColor Animation::getColor() const {
 	return m_color;
+}
+
+
+AnimationType Animation::getType() const {
+	return m_type;
+}
+
+
+float Animation::getScale() const {
+	if (m_type != AnimationType::Destroy)
+		return 1.f;
+
+	float t = m_elapsed / m_duration;
+	
+	return 1.f - t;
 }
