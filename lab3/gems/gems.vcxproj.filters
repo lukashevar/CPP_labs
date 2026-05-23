@@ -51,11 +51,14 @@
     <ClCompile Include="BoardProccessor.cpp">
       <Filter>Исходные файлы\Board</Filter>
     </ClCompile>
-    <ClCompile Include="BoardRenderer.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Исходные файлы\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationManager.cpp">
+      <Filter>Исходные файлы\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardRenderer.cpp">
+      <Filter>Исходные файлы\Board</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +87,9 @@
       <Filter>Исходные файлы\Board</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
+      <Filter>Исходные файлы\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationManager.h">
       <Filter>Исходные файлы\Animation</Filter>
     </ClInclude>
   </ItemGroup>

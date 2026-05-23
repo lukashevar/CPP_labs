@@ -74,7 +74,7 @@ sf::Vector2f BoardRenderer::celltoPixel(int row, int col) {
 }
 
 
-void BoardRenderer::drawGem(sf::RenderWindow& window, GemColor color, sf::Vector2f& position) {
+void BoardRenderer::drawGem(sf::RenderWindow& window, GemColor color, const sf::Vector2f& position) {
 	sf::RectangleShape rect(
 		sf::Vector2f(
 			static_cast<float>(Constants::CELL_SIZE),
