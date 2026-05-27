@@ -20,6 +20,7 @@ private:
 	void render();
 	void update();
 	void startDestroyAnimations();
+	void startFallAnimations();
 	
 	sf::RenderWindow m_window;
 	Board m_board;
@@ -29,6 +30,7 @@ private:
 	std::optional<std::pair<int, int>> m_selectedCell;
 	bool m_pendingMove = false;
 	bool m_pendingDestroy = false;
+	bool m_pendingFall = false;
 	int m_moveRow1 = 0;
 	int m_moveCol1 = 0;
 	int m_moveRow2 = 0;

@@ -1,6 +1,7 @@
 #include "BoardRenderer.h"
 #include "Cell.h"
 #include "Constants.h"
+#include "Animation.h"
 
 
 sf::Color BoardRenderer::toSFMLColor(GemColor color) {
@@ -24,7 +25,11 @@ sf::Color BoardRenderer::toSFMLColor(GemColor color) {
 }
 
 
-void BoardRenderer::draw(sf::RenderWindow& window, const Board& board) {
+void BoardRenderer::draw(
+	sf::RenderWindow& window, 
+	const Board& board,
+	const AnimationManager& animations
+) {
 	sf::RectangleShape rect(
 		sf::Vector2f(
 			static_cast<float>(Constants::CELL_SIZE),
@@ -47,6 +52,21 @@ void BoardRenderer::draw(sf::RenderWindow& window, const Board& board) {
 			rect.setFillColor(toSFMLColor(cell.color));
 
 			if (cell.markedForDestroy)
+				continue;
+
+			bool hidden = false;
+
+			for (const Animation& animation : animations.getAnimations())
+			{
+				if (animation.getRow() == row &&
+					animation.getCol() == col)
+				{
+					hidden = true;
+					break;
+				}
+			}
+
+			if (hidden)
 				continue;
 
 			window.draw(rect);

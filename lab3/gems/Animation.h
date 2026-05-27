@@ -27,6 +27,11 @@ public:
 	GemColor getColor() const;
 	float getScale() const;
 	AnimationType getType() const;
+	int getRow() const;
+	int getCol() const;
+	
+	void setRow(int row);
+	void setCol(int col);
 
 private:
 	AnimationType m_type;
@@ -38,4 +43,7 @@ private:
 
 	float m_duration;
 	float m_elapsed;
+
+	int m_row;
+	int m_col;
 };

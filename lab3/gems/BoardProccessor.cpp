@@ -86,3 +86,31 @@ void BoardProcessor::process(Board& board)
     
     MatchFinder::findMatches(board);
 }
+
+std::vector<FallMove> BoardProcessor::collectFallMoves(Board& board) {
+    std::vector<FallMove> moves;
+
+    for (int col = 0; col < board.getCols(); ++col) {
+        int writeRow = board.getRows() - 1;
+
+        for (int row = board.getRows() - 1; row >= 0; --row) {
+            Cell& cell = board.getCell(row, col);
+
+            if (!cell.isEmpty()) {
+                if (row != writeRow) {
+                    moves.push_back({
+                        row,
+                        col,
+                        writeRow,
+                        col,
+                        cell.color
+                    });
+                }
+
+                --writeRow;
+            }
+        }
+    }
+
+    return moves;
+}

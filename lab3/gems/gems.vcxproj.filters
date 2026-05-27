@@ -28,6 +28,9 @@
     <Filter Include="Исходные файлы\Animation">
       <UniqueIdentifier>{1d137d69-4399-4b9c-906e-a211b391988c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Fall">
+      <UniqueIdentifier>{c15b320c-808f-43e1-872c-d36f94207a5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="AnimationManager.h">
       <Filter>Исходные файлы\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="FallMove.h">
+      <Filter>Исходные файлы\Fall</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,10 +2,15 @@
 
 #include <SFML/Graphics.hpp>
 #include "Board.h"
+#include "AnimationManager.h"
 
 class BoardRenderer {
 public:
-	static void draw(sf::RenderWindow& window, const Board& board);
+	static void draw(
+		sf::RenderWindow& window, 
+		const Board& board,
+		const AnimationManager& animations
+	);
 
 	static bool pixelToCell(
 		const Board& board,

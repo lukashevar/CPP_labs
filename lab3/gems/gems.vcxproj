@@ -153,6 +153,7 @@
     <ClInclude Include="Bonus.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="FallMove.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="MatchFinder.h" />
   </ItemGroup>

@@ -55,3 +55,20 @@ float Animation::getScale() const {
 	
 	return 1.f - t;
 }
+
+int Animation::getRow() const {
+	return m_row;
+}
+
+
+int Animation::getCol() const {
+	return m_col;
+}
+
+void Animation::setRow(int row) {
+	m_row = row;
+}
+
+void Animation::setCol(int col) {
+	m_col = col;
+}
