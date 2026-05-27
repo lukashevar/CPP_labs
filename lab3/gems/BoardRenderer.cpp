@@ -74,7 +74,12 @@ sf::Vector2f BoardRenderer::celltoPixel(int row, int col) {
 }
 
 
-void BoardRenderer::drawGem(sf::RenderWindow& window, GemColor color, const sf::Vector2f& position) {
+void BoardRenderer::drawGem(
+	sf::RenderWindow& window,
+	GemColor color,
+	const sf::Vector2f& position,
+	float scale = 1.f
+) {
 	sf::RectangleShape rect(
 		sf::Vector2f(
 			static_cast<float>(Constants::CELL_SIZE),
@@ -82,10 +87,25 @@ void BoardRenderer::drawGem(sf::RenderWindow& window, GemColor color, const sf::
 		)
 	);
 
-	rect.setPosition(position);
 	rect.setFillColor(toSFMLColor(color));
+
 	rect.setOutlineThickness(1.f);
 	rect.setOutlineColor(sf::Color::Black);
+
+	
+	rect.setOrigin(
+		Constants::CELL_SIZE / 2.f,
+		Constants::CELL_SIZE / 2.f
+	);
+
+	
+	rect.setPosition(
+		position.x + Constants::CELL_SIZE / 2.f,
+		position.y + Constants::CELL_SIZE / 2.f
+	);
+
+	
+	rect.setScale(scale, scale);
 
 	window.draw(rect);
 }

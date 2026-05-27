@@ -17,7 +17,11 @@ public:
 
 	static sf::Vector2f celltoPixel(int row, int col);
 
-	static void drawGem(sf::RenderWindow& window, GemColor color, const sf::Vector2f& position);
+	static void drawGem(sf::RenderWindow& window, 
+		GemColor color, 
+		const sf::Vector2f& position,
+		float scale = 1.f
+	);
 
 private:
 	static sf::Color toSFMLColor(GemColor color);
