@@ -46,6 +46,9 @@ void BoardRenderer::draw(sf::RenderWindow& window, const Board& board) {
 
 			rect.setFillColor(toSFMLColor(cell.color));
 
+			if (cell.markedForDestroy)
+				continue;
+
 			window.draw(rect);
 		}
 	}
@@ -78,7 +81,7 @@ void BoardRenderer::drawGem(
 	sf::RenderWindow& window,
 	GemColor color,
 	const sf::Vector2f& position,
-	float scale = 1.f
+	float scale
 ) {
 	sf::RectangleShape rect(
 		sf::Vector2f(

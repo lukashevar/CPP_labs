@@ -94,6 +94,7 @@ void Game::handleMouseClick(int mouseX, int mouseY)
 
     m_animationManager.add(
         Animation(
+            AnimationType::Swap,
             color1,
             BoardRenderer::celltoPixel(r1, c1),
             BoardRenderer::celltoPixel(row, col),
@@ -103,6 +104,7 @@ void Game::handleMouseClick(int mouseX, int mouseY)
 
     m_animationManager.add(
         Animation(
+            AnimationType::Swap,
             color2,
             BoardRenderer::celltoPixel(row, col),
             BoardRenderer::celltoPixel(r1, c1),
@@ -111,6 +113,7 @@ void Game::handleMouseClick(int mouseX, int mouseY)
     );
 
     m_pendingMove = true;
+
     
     m_moveRow1 = r1;
     m_moveCol1 = c1;
@@ -129,7 +132,8 @@ void Game::render()
         BoardRenderer::drawGem(
             m_window,
             animation.getColor(),
-            animation.getCurrentPosition()
+            animation.getCurrentPosition(),
+            animation.getScale()
         );
     }
 
@@ -146,7 +150,9 @@ void Game::update() {
         m_pendingMove = false;
 
         if (MatchFinder::findMatches(m_board)) {
-            BoardProcessor::process(m_board);
+            startDestroyAnimations();
+
+            m_pendingDestroy = true;
         }
         else {
             m_board.swapCells(
@@ -155,6 +161,37 @@ void Game::update() {
                 m_moveRow2,
                 m_moveCol2
             );
+        }
+    }
+
+    if (m_pendingDestroy && !m_animationManager.isPlaying())
+    {
+        m_pendingDestroy = false;
+
+        BoardProcessor::process(m_board);
+    }
+}
+
+void Game::startDestroyAnimations()
+{
+    for (int row = 0; row < m_board.getRows(); ++row)
+    {
+        for (int col = 0; col < m_board.getCols(); ++col)
+        {
+            Cell& cell = m_board.getCell(row, col);
+
+            if (cell.markedForDestroy)
+            {
+                m_animationManager.add(
+                    Animation(
+                        AnimationType::Destroy,
+                        cell.color,
+                        BoardRenderer::celltoPixel(row, col),
+                        BoardRenderer::celltoPixel(row, col),
+                        Constants::DESTROY_ANIMATION_DURATION
+                    )
+                );
+            }
         }
     }
 }
