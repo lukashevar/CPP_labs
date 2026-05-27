@@ -12,4 +12,8 @@ namespace Constants {
 	constexpr int GEM_COLOR_COUNT = 5;
 
 	constexpr float SWAP_ANIMATION_DURATION = 0.2f;
+
+	constexpr float DESTROY_ANIMATION_DURATION = 0.15f;
+
+	constexpr float FALL_ANIMATION_DURATION = 0.2f;
 }
