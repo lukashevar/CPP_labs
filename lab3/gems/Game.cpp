@@ -19,6 +19,16 @@ Game::Game()
 
     
     BoardProcessor::process(m_board, m_animationManager);
+
+    m_font.loadFromFile("assets/arialmt.ttf");
+
+    m_scoreText.setFont(m_font);
+
+    m_scoreText.setCharacterSize(32);
+
+    m_scoreText.setFillColor(sf::Color::White);
+
+    m_scoreText.setPosition(10.f, 10.f);
 }
 
 void Game::run()
@@ -126,17 +136,27 @@ void Game::handleMouseClick(int mouseX, int mouseY)
 void Game::render()
 {
     m_window.clear();
+
+    
     BoardRenderer::draw(m_window, m_board, m_animationManager);
 
-    for (const Animation& animation : m_animationManager.getAnimations()) {
+    
+    for (const Animation& animation : m_animationManager.getAnimations())
+    {
         BoardRenderer::drawGem(
             m_window,
             animation.getColor(),
             animation.getCurrentPosition(),
-            animation.getScale(),
-            animation.getAlpha()
+            animation.getScale()
         );
     }
+
+    
+    m_scoreText.setString(
+        "Score: " + std::to_string(m_scoreManager.getScore())
+    );
+
+    m_window.draw(m_scoreText);
 
     m_window.display();
 }
@@ -146,6 +166,7 @@ void Game::update()
 {
     float dt = m_clock.restart().asSeconds();
 
+    
     m_animationManager.update(dt);
 
     
@@ -153,9 +174,11 @@ void Game::update()
     {
         m_pendingMove = false;
 
-        
         if (MatchFinder::findMatches(m_board))
         {
+            int gained = BoardProcessor::destroyMarkedCells(m_board, m_animationManager);
+            m_scoreManager.addPoints(gained * 10);
+
             startDestroyAnimations();
             m_pendingDestroy = true;
         }
@@ -163,37 +186,35 @@ void Game::update()
         {
             
             m_board.swapCells(
-                m_moveRow1, m_moveCol1,
-                m_moveRow2, m_moveCol2
+                m_moveRow1,
+                m_moveCol1,
+                m_moveRow2,
+                m_moveCol2
             );
         }
     }
 
+    
     if (m_pendingDestroy && !m_animationManager.isPlaying())
     {
         m_pendingDestroy = false;
 
-        
-        BoardProcessor::destroyMarkedCells(m_board, m_animationManager);
-
-        
         startFallAnimations();
-
         m_pendingFall = true;
     }
 
-    
     if (m_pendingFall && !m_animationManager.isPlaying())
     {
         m_pendingFall = false;
 
-        
         BoardProcessor::collapseColumns(m_board);
         BoardProcessor::fillEmptyCells(m_board);
 
-        
         if (MatchFinder::findMatches(m_board))
         {
+            int gained = BoardProcessor::destroyMarkedCells(m_board, m_animationManager);
+            m_scoreManager.addPoints(gained * 10);
+
             startDestroyAnimations();
             m_pendingDestroy = true;
         }

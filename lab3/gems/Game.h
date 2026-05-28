@@ -8,6 +8,7 @@
 
 #include "Board.h"
 #include "AnimationManager.h"
+#include "ScoreManager.h"
 
 class Game {
 public:
@@ -32,6 +33,7 @@ private:
 	Board m_board;
 	sf::Clock m_clock;
 	AnimationManager m_animationManager;
+	ScoreManager m_scoreManager;
 
 	std::optional<std::pair<int, int>> m_selectedCell;
 	bool m_pendingMove = false;
@@ -41,4 +43,7 @@ private:
 	int m_moveCol1 = 0;
 	int m_moveRow2 = 0;
 	int m_moveCol2 = 0;
+
+	sf::Font m_font;
+	sf::Text m_scoreText;
 };

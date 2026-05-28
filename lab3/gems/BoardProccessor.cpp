@@ -4,8 +4,10 @@
 
 
 
-void BoardProcessor::destroyMarkedCells(Board& board, AnimationManager& animations)
+int BoardProcessor::destroyMarkedCells(Board& board, AnimationManager& animations)
 {
+    int destroyed = 0;
+
     for (int row = 0; row < board.getRows(); ++row)
     {
         for (int col = 0; col < board.getCols(); ++col)
@@ -14,6 +16,7 @@ void BoardProcessor::destroyMarkedCells(Board& board, AnimationManager& animatio
 
             if (cell.markedForDestroy)
             {
+
                 BonusSystem::trySpawnBonus(
                     board,
                     animations,
@@ -27,6 +30,8 @@ void BoardProcessor::destroyMarkedCells(Board& board, AnimationManager& animatio
             }
         }
     }
+
+    return destroyed * 10;
 }
 
 

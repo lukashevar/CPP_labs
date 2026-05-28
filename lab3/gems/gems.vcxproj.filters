@@ -31,6 +31,9 @@
     <Filter Include="Исходные файлы\Fall">
       <UniqueIdentifier>{c15b320c-808f-43e1-872c-d36f94207a5e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Score">
+      <UniqueIdentifier>{383fbc2e-1396-4c45-bd6a-23b5fa68b4ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -41,9 +44,6 @@
     </ClCompile>
     <ClCompile Include="Board.cpp">
       <Filter>Исходные файлы\Board</Filter>
-    </ClCompile>
-    <ClCompile Include="Bonus.cpp">
-      <Filter>Исходные файлы\Bonus</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Исходные файлы\Game</Filter>
@@ -63,6 +63,12 @@
     <ClCompile Include="BoardRenderer.cpp">
       <Filter>Исходные файлы\Board</Filter>
     </ClCompile>
+    <ClCompile Include="BonusSystem.cpp">
+      <Filter>Исходные файлы\Bonus</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>Исходные файлы\Score</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h">
@@ -70,9 +76,6 @@
     </ClInclude>
     <ClInclude Include="Board.h">
       <Filter>Исходные файлы\Board</Filter>
-    </ClInclude>
-    <ClInclude Include="Bonus.h">
-      <Filter>Исходные файлы\Bonus</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Исходные файлы\Game</Filter>
@@ -97,6 +100,15 @@
     </ClInclude>
     <ClInclude Include="FallMove.h">
       <Filter>Исходные файлы\Fall</Filter>
+    </ClInclude>
+    <ClInclude Include="BonusType.h">
+      <Filter>Исходные файлы\Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="BonusSystem.h">
+      <Filter>Исходные файлы\Bonus</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>Исходные файлы\Score</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

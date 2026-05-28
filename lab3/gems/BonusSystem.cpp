@@ -70,7 +70,6 @@ void BonusSystem::applyRecolorBonus(
     if (candidates.empty())
         return;
 
-    // 💥 АНИМАЦИЯ ЦЕНТРА (ВАЖНО)
     Animation anim(
         AnimationType::RecolorBonus,
         color,
@@ -84,7 +83,6 @@ void BonusSystem::applyRecolorBonus(
 
     animations.add(anim);
 
-    // 🎨 меняем 2 случайные клетки
     for (int i = 0; i < 2 && !candidates.empty(); ++i)
     {
         int idx = rand() % candidates.size();

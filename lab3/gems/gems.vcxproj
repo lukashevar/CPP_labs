@@ -138,11 +138,12 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardProccessor.cpp" />
     <ClCompile Include="BoardRenderer.cpp" />
-    <ClCompile Include="Bonus.cpp" />
+    <ClCompile Include="BonusSystem.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MatchFinder.cpp" />
+    <ClCompile Include="ScoreManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -150,12 +151,14 @@
     <ClInclude Include="Board.h" />
     <ClInclude Include="BoardProcessor.h" />
     <ClInclude Include="BoardRenderer.h" />
-    <ClInclude Include="Bonus.h" />
+    <ClInclude Include="BonusSystem.h" />
+    <ClInclude Include="BonusType.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="FallMove.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="MatchFinder.h" />
+    <ClInclude Include="ScoreManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
