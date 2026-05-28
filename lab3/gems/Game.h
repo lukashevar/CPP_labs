@@ -21,6 +21,12 @@ private:
 	void update();
 	void startDestroyAnimations();
 	void startFallAnimations();
+	void startBombAnimation(int row, int col);
+	void startRecolorAnimation(
+		int row,
+		int col,
+		GemColor color
+	);
 	
 	sf::RenderWindow m_window;
 	Board m_board;

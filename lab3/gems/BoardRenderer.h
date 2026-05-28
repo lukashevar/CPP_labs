@@ -25,7 +25,8 @@ public:
 	static void drawGem(sf::RenderWindow& window, 
 		GemColor color, 
 		const sf::Vector2f& position,
-		float scale = 1.f
+		float scale = 1.f,
+		float alpha = 255.f
 	);
 
 private:

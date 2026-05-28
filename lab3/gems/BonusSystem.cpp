@@ -1,10 +1,13 @@
-#include "BonusSystem.h"
+﻿#include "BonusSystem.h"
+#include "BoardRenderer.h"
+
 
 #include <random>
 #include <vector>
 
 void BonusSystem::trySpawnBonus(
     Board& board,
+    AnimationManager& animations,
     int row,
     int col,
     GemColor sourceColor
@@ -22,6 +25,7 @@ void BonusSystem::trySpawnBonus(
     {
         applyRecolorBonus(
             board,
+            animations,
             row,
             col,
             sourceColor
@@ -31,6 +35,7 @@ void BonusSystem::trySpawnBonus(
     {
         applyBombBonus(
             board,
+            animations,
             row,
             col
         );
@@ -40,6 +45,7 @@ void BonusSystem::trySpawnBonus(
 
 void BonusSystem::applyRecolorBonus(
     Board& board,
+    AnimationManager& animations,
     int centerRow,
     int centerCol,
     GemColor color
@@ -54,14 +60,9 @@ void BonusSystem::applyRecolorBonus(
             int dr = abs(row - centerRow);
             int dc = abs(col - centerCol);
 
-            
-            if (dr <= 3 && dc <= 3)
+            if (dr <= 3 && dc <= 3 && (dr + dc > 1))
             {
-                
-                if (dr + dc > 1)
-                {
-                    candidates.push_back({ row, col });
-                }
+                candidates.push_back({ row, col });
             }
         }
     }
@@ -69,11 +70,22 @@ void BonusSystem::applyRecolorBonus(
     if (candidates.empty())
         return;
 
-    
-    board.getCell(centerRow, centerCol).color = color;
+    // 💥 АНИМАЦИЯ ЦЕНТРА (ВАЖНО)
+    Animation anim(
+        AnimationType::RecolorBonus,
+        color,
+        BoardRenderer::celltoPixel(centerRow, centerCol),
+        BoardRenderer::celltoPixel(centerRow, centerCol),
+        0.5f
+    );
 
-    
-    for (int i = 0; i < 2; ++i)
+    anim.setRow(centerRow);
+    anim.setCol(centerCol);
+
+    animations.add(anim);
+
+    // 🎨 меняем 2 случайные клетки
+    for (int i = 0; i < 2 && !candidates.empty(); ++i)
     {
         int idx = rand() % candidates.size();
 
@@ -84,9 +96,9 @@ void BonusSystem::applyRecolorBonus(
     }
 }
 
-
 void BonusSystem::applyBombBonus(
     Board& board,
+    AnimationManager& animations,
     int centerRow,
     int centerCol
 )
@@ -100,7 +112,17 @@ void BonusSystem::applyBombBonus(
         int row = rand() % board.getRows();
         int col = rand() % board.getCols();
 
-        board.getCell(row, col)
-            .markedForDestroy = true;
+        Animation anim(
+            AnimationType::BombBonus,
+            GemColor::Yellow,
+            BoardRenderer::celltoPixel(row, col),
+            BoardRenderer::celltoPixel(row, col),
+            0.5f
+        );
+
+        anim.setRow(row);
+        anim.setCol(col);
+
+        animations.add(anim);
     }
 }

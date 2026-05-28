@@ -6,7 +6,10 @@
 enum class AnimationType {
 	Swap,
 	Destroy,
-	Fall
+	Fall,
+	
+	RecolorBonus,
+	BombBonus
 };
 
 class Animation {
@@ -32,6 +35,8 @@ public:
 	
 	void setRow(int row);
 	void setCol(int col);
+
+	float getAlpha() const;
 
 private:
 	AnimationType m_type;

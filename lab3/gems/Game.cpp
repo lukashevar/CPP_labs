@@ -18,7 +18,7 @@ Game::Game()
     m_window.setFramerateLimit(60);
 
     
-    BoardProcessor::process(m_board);
+    BoardProcessor::process(m_board, m_animationManager);
 }
 
 void Game::run()
@@ -133,7 +133,8 @@ void Game::render()
             m_window,
             animation.getColor(),
             animation.getCurrentPosition(),
-            animation.getScale()
+            animation.getScale(),
+            animation.getAlpha()
         );
     }
 
@@ -173,7 +174,7 @@ void Game::update()
         m_pendingDestroy = false;
 
         
-        BoardProcessor::destroyMarkedCells(m_board);
+        BoardProcessor::destroyMarkedCells(m_board, m_animationManager);
 
         
         startFallAnimations();
@@ -249,4 +250,42 @@ void Game::startFallAnimations()
 
     
     m_pendingFall = true;
+}
+
+
+void Game::startBombAnimation(int row, int col)
+{
+    Animation anim(
+        AnimationType::BombBonus,
+        GemColor::Yellow,
+        BoardRenderer::celltoPixel(row, col),
+        BoardRenderer::celltoPixel(row, col),
+        0.5f
+    );
+
+    anim.setRow(row);
+    anim.setCol(col);
+
+    m_animationManager.add(anim);
+}
+
+
+void Game::startRecolorAnimation(
+    int row,
+    int col,
+    GemColor color
+)
+{
+    Animation anim(
+        AnimationType::RecolorBonus,
+        color,
+        BoardRenderer::celltoPixel(row, col),
+        BoardRenderer::celltoPixel(row, col),
+        0.6f
+    );
+
+    anim.setRow(row);
+    anim.setCol(col);
+
+    m_animationManager.add(anim);
 }

@@ -101,7 +101,8 @@ void BoardRenderer::drawGem(
 	sf::RenderWindow& window,
 	GemColor color,
 	const sf::Vector2f& position,
-	float scale
+	float scale,
+	float alpha
 ) {
 	sf::RectangleShape rect(
 		sf::Vector2f(
@@ -110,7 +111,11 @@ void BoardRenderer::drawGem(
 		)
 	);
 
-	rect.setFillColor(toSFMLColor(color));
+	sf::Color renderColor = toSFMLColor(color);
+
+	renderColor.a = static_cast<sf::Uint8>(alpha);
+
+	rect.setFillColor(renderColor);
 
 	rect.setOutlineThickness(1.f);
 	rect.setOutlineColor(sf::Color::Black);

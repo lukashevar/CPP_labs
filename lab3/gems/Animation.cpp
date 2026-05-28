@@ -47,14 +47,26 @@ AnimationType Animation::getType() const {
 }
 
 
-float Animation::getScale() const {
-	if (m_type != AnimationType::Destroy)
-		return 1.f;
-
+float Animation::getScale() const
+{
 	float t = m_elapsed / m_duration;
-	
-	return 1.f - t;
+
+	switch (m_type)
+	{
+	case AnimationType::Destroy:
+		return 1.f - t;
+
+	case AnimationType::BombBonus:
+		return 1.f + t * 2.f;
+
+	case AnimationType::RecolorBonus:
+		return 1.f + sin(t * 10.f) * 0.2f;
+
+	default:
+		return 1.f;
+	}
 }
+
 
 int Animation::getRow() const {
 	return m_row;
@@ -71,4 +83,19 @@ void Animation::setRow(int row) {
 
 void Animation::setCol(int col) {
 	m_col = col;
+}
+
+float Animation::getAlpha() const {
+	float t = m_elapsed / m_duration;
+
+	switch (m_type) {
+	case AnimationType::BombBonus:
+		return 255.f * (1.f - t);
+
+	case AnimationType::Destroy:
+		return 255.f * (1.f - t);
+
+	default:
+		return 255.f;
+	}
 }

@@ -1,8 +1,10 @@
 #include "BoardProcessor.h"
 #include "MatchFinder.h"
+#include "BonusSystem.h"
 
 
-void BoardProcessor::destroyMarkedCells(Board& board)
+
+void BoardProcessor::destroyMarkedCells(Board& board, AnimationManager& animations)
 {
     for (int row = 0; row < board.getRows(); ++row)
     {
@@ -12,6 +14,14 @@ void BoardProcessor::destroyMarkedCells(Board& board)
 
             if (cell.markedForDestroy)
             {
+                BonusSystem::trySpawnBonus(
+                    board,
+                    animations,
+                    row,
+                    col,
+                    cell.color
+                );
+
                 cell.color = GemColor::Black;
                 cell.markedForDestroy = false;
             }
@@ -73,12 +83,12 @@ void BoardProcessor::fillEmptyCells(Board& board)
 }
 
 
-void BoardProcessor::process(Board& board)
+void BoardProcessor::process(Board& board, AnimationManager& animations)
 {
     
     while (MatchFinder::findMatches(board))
     {
-        destroyMarkedCells(board);
+        destroyMarkedCells(board, animations);
         collapseColumns(board);
         fillEmptyCells(board);
     }
