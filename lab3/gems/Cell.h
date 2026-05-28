@@ -1,4 +1,5 @@
 #pragma once
+#include "BonusType.h"
 
 enum class GemColor {
 	Red,
@@ -14,6 +15,7 @@ public:
 
 	GemColor color;
 	bool markedForDestroy = false;
+	BonusType bonus = BonusType::None;
 
 	bool isEmpty() const;
 };
