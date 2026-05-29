@@ -48,3 +48,8 @@ sf::Vector2f Ball::getVelocity() const {
 void Ball::setVelocity(const sf::Vector2f& v) {
 	velocity = v;
 }
+
+
+sf::FloatRect Ball::getBounds() const {
+	return shape.getGlobalBounds();
+}

@@ -40,6 +40,8 @@ void Game::handleInput() {}
 void Game::update(float dt) {
 	paddle.update(dt);
 	ball.update(dt);
+
+	checkCollision();
 }
 
 
@@ -52,4 +54,26 @@ void Game::render() {
 	window.display();
 }
 
+
+void Game::checkCollision() {
+	sf::FloatRect ballBounds = ball.getBounds();
+	sf::FloatRect paddleBounds = paddle.getBounds();
+
+	if (ballBounds.intersects(paddleBounds)) {
+		float paddleCenter = paddleBounds.left + paddleBounds.width / 2.f;
+		float ballCenter = ballBounds.left + ballBounds.width / 2.f;
+
+		float distance = (ballCenter - paddleCenter) / (paddleBounds.width / 2.f);
+
+		if (distance < -1.f) distance = -1.f;
+		if (distance > 1.f) distance = 1.f;
+
+		sf::Vector2f vel = ball.getVelocity();
+
+		vel.x = distance;
+		vel.y = -std::abs(vel.y);
+
+		ball.setVelocity(vel);
+	} 
+}
 
