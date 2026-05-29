@@ -1,4 +1,4 @@
-#include "include/core/Game.h"
+#include "core/Game.h"
 
 Game::Game()
 	: window(sf::VideoMode(800, 600), "Arkanoid"),
@@ -37,12 +37,15 @@ void Game::proccessEvents() {
 void Game::handleInput() {}
 
 
-void Game::update(float dt) {}
+void Game::update(float dt) {
+	paddle.update(dt);
+}
 
 
 void Game::render() {
 	window.clear(sf::Color::Black);
 
+	paddle.render(window);
 
 	window.display();
 }

@@ -1,6 +1,8 @@
 #pragma once
 
+#include "entities/Paddle.h"
 #include <SFML/Graphics.hpp>
+
 
 class Game {
 public:
@@ -21,4 +23,6 @@ private:
 	sf::Clock clock;
 
 	bool isRunning;
+
+	Paddle paddle;
 };

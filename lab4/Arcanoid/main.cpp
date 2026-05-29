@@ -1,4 +1,4 @@
-#include "include/core/Game.h"
+#include "core/Game.h"
 
 int main()
 {

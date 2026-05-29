@@ -21,9 +21,15 @@
     <ClCompile Include="src\core\Game.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\entities\Paddle.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\Game.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\Paddle.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
