@@ -73,7 +73,7 @@ void BonusSystem::applyRecolorBonus(
     Animation anim(
         AnimationType::RecolorBonus,
         color,
-        BoardRenderer::celltoPixel(centerRow, centerCol),
+        BoardRenderer::celltoPixel(centerRow - 1, centerCol),
         BoardRenderer::celltoPixel(centerRow, centerCol),
         0.5f
     );

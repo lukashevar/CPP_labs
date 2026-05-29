@@ -10,6 +10,13 @@
 #include "AnimationManager.h"
 #include "ScoreManager.h"
 
+enum class GameState {
+	Idle,
+	Swapping,
+	Destroying,
+	Falling
+};
+
 class Game {
 public:
 	Game();
@@ -34,11 +41,9 @@ private:
 	sf::Clock m_clock;
 	AnimationManager m_animationManager;
 	ScoreManager m_scoreManager;
+	GameState m_state = GameState::Idle;
 
 	std::optional<std::pair<int, int>> m_selectedCell;
-	bool m_pendingMove = false;
-	bool m_pendingDestroy = false;
-	bool m_pendingFall = false;
 	int m_moveRow1 = 0;
 	int m_moveCol1 = 0;
 	int m_moveRow2 = 0;

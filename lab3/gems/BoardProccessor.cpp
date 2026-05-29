@@ -4,7 +4,10 @@
 
 
 
-int BoardProcessor::destroyMarkedCells(Board& board, AnimationManager& animations)
+int BoardProcessor::destroyMarkedCells(
+    Board& board,
+    AnimationManager& animations
+)
 {
     int destroyed = 0;
 
@@ -16,7 +19,6 @@ int BoardProcessor::destroyMarkedCells(Board& board, AnimationManager& animation
 
             if (cell.markedForDestroy)
             {
-
                 BonusSystem::trySpawnBonus(
                     board,
                     animations,
@@ -26,7 +28,10 @@ int BoardProcessor::destroyMarkedCells(Board& board, AnimationManager& animation
                 );
 
                 cell.color = GemColor::Black;
+
                 cell.markedForDestroy = false;
+
+                destroyed++;
             }
         }
     }

@@ -122,7 +122,7 @@ void Game::handleMouseClick(int mouseX, int mouseY)
         )
     );
 
-    m_pendingMove = true;
+    m_state = GameState::Swapping;
 
     
     m_moveRow1 = r1;
@@ -147,7 +147,8 @@ void Game::render()
             m_window,
             animation.getColor(),
             animation.getCurrentPosition(),
-            animation.getScale()
+            animation.getScale(),
+            animation.getAlpha()
         );
     }
 
@@ -166,21 +167,21 @@ void Game::update()
 {
     float dt = m_clock.restart().asSeconds();
 
-    
     m_animationManager.update(dt);
 
     
-    if (m_pendingMove && !m_animationManager.isPlaying())
-    {
-        m_pendingMove = false;
+    if (m_animationManager.isPlaying())
+        return;
 
+    switch (m_state)
+    {
+    case GameState::Swapping:
+    {
         if (MatchFinder::findMatches(m_board))
         {
-            int gained = BoardProcessor::destroyMarkedCells(m_board, m_animationManager);
-            m_scoreManager.addPoints(gained * 10);
-
             startDestroyAnimations();
-            m_pendingDestroy = true;
+
+            m_state = GameState::Destroying;
         }
         else
         {
@@ -191,33 +192,53 @@ void Game::update()
                 m_moveRow2,
                 m_moveCol2
             );
+
+            m_state = GameState::Idle;
         }
+
+        break;
     }
 
-    
-    if (m_pendingDestroy && !m_animationManager.isPlaying())
+    case GameState::Destroying:
     {
-        m_pendingDestroy = false;
+        int gained =
+            BoardProcessor::destroyMarkedCells(
+                m_board,
+                m_animationManager
+            );
+
+        m_scoreManager.addPoints(gained);
 
         startFallAnimations();
-        m_pendingFall = true;
+
+        m_state = GameState::Falling;
+
+        break;
     }
 
-    if (m_pendingFall && !m_animationManager.isPlaying())
+    case GameState::Falling:
     {
-        m_pendingFall = false;
-
         BoardProcessor::collapseColumns(m_board);
+
         BoardProcessor::fillEmptyCells(m_board);
 
         if (MatchFinder::findMatches(m_board))
         {
-            int gained = BoardProcessor::destroyMarkedCells(m_board, m_animationManager);
-            m_scoreManager.addPoints(gained * 10);
-
             startDestroyAnimations();
-            m_pendingDestroy = true;
+
+            m_state = GameState::Destroying;
         }
+        else
+        {
+            m_state = GameState::Idle;
+        }
+
+        break;
+    }
+
+    case GameState::Idle:
+    default:
+        break;
     }
 }
 
@@ -248,29 +269,29 @@ void Game::startDestroyAnimations()
 
 void Game::startFallAnimations()
 {
-    
     auto moves = BoardProcessor::collectFallMoves(m_board);
 
-    
     for (const FallMove& move : moves)
     {
         Animation anim(
             AnimationType::Fall,
             move.color,
-            BoardRenderer::celltoPixel(move.fromRow, move.fromCol),
-            BoardRenderer::celltoPixel(move.toRow, move.toCol),
+            BoardRenderer::celltoPixel(
+                move.fromRow,
+                move.fromCol
+            ),
+            BoardRenderer::celltoPixel(
+                move.toRow,
+                move.toCol
+            ),
             Constants::FALL_ANIMATION_DURATION
         );
 
-        
         anim.setRow(move.fromRow);
         anim.setCol(move.fromCol);
 
         m_animationManager.add(anim);
     }
-
-    
-    m_pendingFall = true;
 }
 
 
