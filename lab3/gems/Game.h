@@ -35,7 +35,7 @@ private:
 		int col,
 		GemColor color
 	);
-	
+
 	sf::RenderWindow m_window;
 	Board m_board;
 	sf::Clock m_clock;

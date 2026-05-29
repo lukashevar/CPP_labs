@@ -20,3 +20,4 @@ public:
 private:
 	std::vector<Animation> m_animations;
 };
+
