@@ -39,6 +39,7 @@ void Game::handleInput() {}
 
 void Game::update(float dt) {
 	paddle.update(dt);
+	ball.update(dt);
 }
 
 
@@ -46,6 +47,7 @@ void Game::render() {
 	window.clear(sf::Color::Black);
 
 	paddle.render(window);
+	ball.render(window);
 
 	window.display();
 }

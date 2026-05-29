@@ -1,7 +1,9 @@
 #pragma once
 
-#include "entities/Paddle.h"
 #include <SFML/Graphics.hpp>
+
+#include "entities/Paddle.h"
+#include "entities/Ball.h"
 
 
 class Game {
@@ -18,6 +20,8 @@ private:
 
 	void handleInput();
 
+	void checkCollision();
+
 
 	sf::RenderWindow window;
 	sf::Clock clock;
@@ -25,4 +29,5 @@ private:
 	bool isRunning;
 
 	Paddle paddle;
+	Ball ball;
 };

@@ -24,10 +24,12 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\sfml\SFML-2.6.1\include;$(ProjectDir)include</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="src\core\Game.cpp" />
+    <ClCompile Include="src\entities\Ball.cpp" />
     <ClCompile Include="src\entities\Paddle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\Game.h" />
+    <ClInclude Include="include\entities\Ball.h" />
     <ClInclude Include="include\entities\Paddle.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
