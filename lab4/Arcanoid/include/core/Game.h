@@ -21,12 +21,13 @@ private:
 	void update(float dt);
 	void render();
 
-	void handleInput();
+	void handleInput(const sf::Event& event);
 
 	void checkCollision();
 	void checkBlockCollisions();
 
 	void createLevel();
+	void restartGame();
 
 
 	sf::RenderWindow window;
@@ -37,4 +38,7 @@ private:
 	Paddle paddle;
 	Ball ball;
 	std::vector<Block> blocks;
+
+	int lives;
+	bool gameOver;
 };

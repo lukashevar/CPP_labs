@@ -2,7 +2,9 @@
 
 Game::Game()
 	: window(sf::VideoMode(800, 600), "Arkanoid"),
-	isRunning(true) {
+	isRunning(true),
+	lives(3),
+	gameOver(false) {
 	window.setFramerateLimit(60);
 	
 	createLevel();
@@ -17,7 +19,6 @@ void Game::run() {
 		float dt = clock.restart().asSeconds();
 
 		proccessEvents();
-		handleInput();
 		update(dt);
 		render();
 	}
@@ -32,11 +33,19 @@ void Game::proccessEvents() {
 			window.close();
 			isRunning = false;
 		}
+
+		handleInput(event);
 	}
 }
 
 
-void Game::handleInput() {}
+void Game::handleInput(const sf::Event& event) {
+	if (event.type == sf::Event::KeyPressed) {
+		if (event.key.code == sf::Keyboard::R) {
+			restartGame();
+		}
+	}
+}
 
 
 void Game::update(float dt) {
@@ -45,6 +54,19 @@ void Game::update(float dt) {
 
 	checkCollision();
 	checkBlockCollisions();
+
+	if (ball.isOutOfBounds()) {
+		lives--;
+
+		if (lives <= 0) {
+			gameOver = true;
+		}
+		else {
+			ball.reset();
+
+			paddle.setPosition(300.f, 550.f);
+		}
+	}
 }
 
 
@@ -116,4 +138,15 @@ void Game::checkBlockCollisions() {
 			break;
 		}
 	}
+}
+
+void Game::restartGame() {
+	lives = 3;
+	gameOver = false;
+
+	blocks.clear();
+	createLevel();
+
+	ball.reset();
+	paddle.setPosition(300.f, 550.f);
 }

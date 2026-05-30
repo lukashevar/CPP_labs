@@ -53,3 +53,14 @@ void Ball::setVelocity(const sf::Vector2f& v) {
 sf::FloatRect Ball::getBounds() const {
 	return shape.getGlobalBounds();
 }
+
+void Ball::reset() {
+	shape.setPosition(400.f, 300.f);
+
+	velocity.x = -1.f;
+	velocity.y = -1.f;
+}
+
+bool Ball::isOutOfBounds() const {
+	return shape.getPosition().y > 600.f;
+}
