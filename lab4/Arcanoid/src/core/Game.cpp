@@ -4,6 +4,8 @@ Game::Game()
 	: window(sf::VideoMode(800, 600), "Arkanoid"),
 	isRunning(true) {
 	window.setFramerateLimit(60);
+	
+	createLevel();
 }
 
 
@@ -42,6 +44,7 @@ void Game::update(float dt) {
 	ball.update(dt);
 
 	checkCollision();
+	checkBlockCollisions();
 }
 
 
@@ -50,6 +53,9 @@ void Game::render() {
 
 	paddle.render(window);
 	ball.render(window);
+	for (auto& block : blocks) {
+		block.render(window);
+	}
 
 	window.display();
 }
@@ -77,3 +83,37 @@ void Game::checkCollision() {
 	} 
 }
 
+void Game::createLevel() {
+	blocks.clear();
+
+	for (int y = 0; y < 5; y++)
+	{
+		for (int x = 0; x < 10; x++)
+		{
+			blocks.emplace_back(
+				sf::Vector2f(60.f + x * 65.f, 50.f + y * 30.f),
+				sf::Vector2f(60.f, 20.f),
+				sf::Color::Blue
+			);
+		}
+	}
+}
+
+void Game::checkBlockCollisions() {
+	sf::FloatRect ballBounds = ball.getBounds();
+
+	for (auto& block : blocks) {
+		if (block.isDestroyed())
+			continue;
+
+		if (ballBounds.intersects(block.getBounds())) {
+			block.destroy();
+
+			sf::Vector2f vel = ball.getVelocity();
+			vel.y = -vel.y;
+			ball.setVelocity(vel);
+
+			break;
+		}
+	}
+}

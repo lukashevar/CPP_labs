@@ -1,9 +1,12 @@
 #pragma once
 
+#include <vector>
+
 #include <SFML/Graphics.hpp>
 
 #include "entities/Paddle.h"
 #include "entities/Ball.h"
+#include "entities/Block.h"
 
 
 class Game {
@@ -21,6 +24,9 @@ private:
 	void handleInput();
 
 	void checkCollision();
+	void checkBlockCollisions();
+
+	void createLevel();
 
 
 	sf::RenderWindow window;
@@ -30,4 +36,5 @@ private:
 
 	Paddle paddle;
 	Ball ball;
+	std::vector<Block> blocks;
 };
