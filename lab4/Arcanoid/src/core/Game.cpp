@@ -62,6 +62,7 @@ void Game::update(float dt) {
 	paddle.update(dt);
 	ball.update(dt);
 
+	checkWallCollisions();
 	checkCollision();
 	checkBlockCollisions();
 
@@ -106,17 +107,23 @@ void Game::checkCollision() {
 		float paddleCenter = paddleBounds.left + paddleBounds.width / 2.f;
 		float ballCenter = ballBounds.left + ballBounds.width / 2.f;
 
-		float distance = (ballCenter - paddleCenter) / (paddleBounds.width / 2.f);
+		float offset = (ballCenter - paddleCenter) / (paddleBounds.width / 2.f);
 
-		if (distance < -1.f) distance = -1.f;
-		if (distance > 1.f) distance = 1.f;
+		
+		if (offset < -1.f) offset = -1.f;
+		if (offset > 1.f) offset = 1.f;
 
-		sf::Vector2f vel = ball.getVelocity();
+		float maxAngle = 60.f * 3.14159f / 180.f; 
 
-		vel.x = distance;
-		vel.y = -std::abs(vel.y);
+		float angle = offset * maxAngle;
 
-		ball.setVelocity(vel);
+		float speed = ball.getSpeed();
+
+		sf::Vector2f newDir;
+		newDir.x = sin(angle);
+		newDir.y = -cos(angle);
+
+		ball.setVelocity(newDir);
 	} 
 }
 
@@ -138,24 +145,81 @@ void Game::createLevel() {
 
 void Game::checkBlockCollisions() {
 	sf::FloatRect ballBounds = ball.getBounds();
+	sf::Vector2f ballPos = ball.getPosition();
+	sf::Vector2f vel = ball.getVelocity();
 
-	for (auto& block : blocks) {
+	for (auto& block : blocks)
+	{
 		if (block.isDestroyed())
 			continue;
 
-		if (ballBounds.intersects(block.getBounds())) {
-			block.destroy();
+		sf::FloatRect blockBounds = block.getBounds();
 
-			score += 10;
-			hud.updateScore(score);
+		if (!ballBounds.intersects(blockBounds))
+			continue;
 
-			sf::Vector2f vel = ball.getVelocity();
-			vel.y = -vel.y;
-			ball.setVelocity(vel);
+		block.destroy();
+		score += 10;
+		hud.updateScore(score);
+		
+		float ballCenterX = ballBounds.left + ballBounds.width / 2.f;
+		float ballCenterY = ballBounds.top + ballBounds.height / 2.f;
 
-			break;
+		float blockCenterX = blockBounds.left + blockBounds.width / 2.f;
+		float blockCenterY = blockBounds.top + blockBounds.height / 2.f;
+
+		float dx = ballCenterX - blockCenterX;
+		float dy = ballCenterY - blockCenterY;
+
+		float overlapX = (ballBounds.width + blockBounds.width) / 2.f - std::abs(dx);
+		float overlapY = (ballBounds.height + blockBounds.height) / 2.f - std::abs(dy);
+
+		if (overlapX < overlapY)
+		{
+			vel.x = -vel.x;
+
+			if (dx > 0)
+				ball.setPosition(blockBounds.left + blockBounds.width + ballBounds.width / 2.f, ballPos.y);
+			else
+				ball.setPosition(blockBounds.left - ballBounds.width / 2.f, ballPos.y);
 		}
+		else
+		{
+			vel.y = -vel.y;
+
+			if (dy > 0)
+				ball.setPosition(ballPos.x, blockBounds.top + blockBounds.height + ballBounds.height / 2.f);
+			else
+				ball.setPosition(ballPos.x, blockBounds.top - ballBounds.height / 2.f);
+		}
+
+		ball.setVelocity(vel);
+		break; 
 	}
+}
+
+void Game::checkWallCollisions() {
+	sf::Vector2f pos = ball.getPosition();
+	sf::Vector2f vel = ball.getVelocity();
+	sf::FloatRect bounds = ball.getBounds();
+
+	if (pos.x - bounds.width / 2.f <= 0) {
+		vel.x = std::abs(vel.x);
+		ball.setPosition(bounds.width / 2.f, pos.y);
+	}
+
+	if (pos.x + bounds.width / 2.f >= 800) {
+		vel.x = -std::abs(vel.x);
+		ball.setPosition(800.f - bounds.width / 2.f, pos.y);
+	}
+
+	if (pos.y - bounds.height / 2.f <= 0.f)
+	{
+		vel.y = std::abs(vel.y);
+		ball.setPosition(pos.x, bounds.height / 2.f);
+	}
+
+	ball.setVelocity(vel);
 }
 
 void Game::restartGame() {

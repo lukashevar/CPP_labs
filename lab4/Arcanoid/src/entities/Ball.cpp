@@ -6,10 +6,11 @@ Ball::Ball() {
 	shape.setFillColor(sf::Color::Red);
 	shape.setOrigin(10.f, 10.f);
 
-	shape.setPosition(400.f, 300.f);
+	shape.setPosition(Config::BallStartX, Config::BallStartY);
 
 	speed = 400.f;
-	velocity = { -1.f, -1.f };
+	velocity = { 0.f, 0.f };
+	isLaunched = false;
 }
 
 
@@ -18,16 +19,6 @@ void Ball::update(float dt) {
 		return;
 
 	shape.move(velocity * speed * dt);
-
-	sf::Vector2f pos = shape.getPosition();
-
-	if (pos.x <= 0.f || pos.x >= 800.f)
-		velocity.x = -velocity.x;
-
-	if (pos.y <= 0.f)
-		velocity.y = -velocity.y;
-
-	
 }
 
 
@@ -48,6 +39,10 @@ sf::Vector2f Ball::getPosition() const {
 
 sf::Vector2f Ball::getVelocity() const {
 	return velocity;
+}
+
+float Ball::getSpeed() const {
+	return speed;
 }
 
 
@@ -75,6 +70,6 @@ bool Ball::isOutOfBounds() const {
 void Ball::launch() {
 	if (!isLaunched) {
 		isLaunched = true;
-		velocity = { -1.f, -1.f };
+		velocity = { 0.f, -1.f };
 	}
 }

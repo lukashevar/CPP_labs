@@ -26,6 +26,7 @@ private:
 
 	void checkCollision();
 	void checkBlockCollisions();
+	void checkWallCollisions();
 
 	void createLevel();
 	void restartGame();
