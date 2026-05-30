@@ -11,6 +11,9 @@ Game::Game()
 
 	score = 0;
 	hud.updateScore(score);
+
+	paddle.reset();
+	ball.reset();
 }
 
 
@@ -44,6 +47,10 @@ void Game::proccessEvents() {
 
 void Game::handleInput(const sf::Event& event) {
 	if (event.type == sf::Event::KeyPressed) {
+		if (event.key.code == sf::Keyboard::Space) {
+			ball.launch();
+		}
+
 		if (event.key.code == sf::Keyboard::R) {
 			restartGame();
 		}
@@ -71,8 +78,7 @@ void Game::update(float dt) {
 
 		else {
 			ball.reset();
-
-			paddle.setPosition(300.f, 550.f);
+			paddle.reset();
 		}
 	}
 }
@@ -161,7 +167,7 @@ void Game::restartGame() {
 	createLevel();
 
 	ball.reset();
-	paddle.setPosition(300.f, 550.f);
+	paddle.reset();
 
 	hud.showGameOver(false);
 	hud.updateLives(lives);

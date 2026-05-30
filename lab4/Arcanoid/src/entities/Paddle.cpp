@@ -1,4 +1,5 @@
 #include "entities/Paddle.h"
+#include "Config.h"
 
 Paddle::Paddle() {
 	shape.setSize(sf::Vector2f(120.f, 20.f));
@@ -57,4 +58,8 @@ sf::Vector2f Paddle::getPosition() const {
 
 sf::FloatRect Paddle::getBounds() const {
 	return shape.getGlobalBounds();
+}
+
+void Paddle::reset() {
+	shape.setPosition(Config::PaddleStartX, Config::PaddleStartY);
 }

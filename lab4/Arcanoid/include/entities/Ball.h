@@ -2,6 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 
+enum class BallState {
+	OnPaddle,
+	Launched
+};
+
 class Ball {
 public:
 	Ball();
@@ -9,6 +14,7 @@ public:
 	void update(float dt);
 	void render(sf::RenderWindow& window);
 	void reset();
+	void launch();
 
 	void setPosition(float x, float y);
 
@@ -25,4 +31,8 @@ private:
 	sf::Vector2f velocity;
 
 	float speed;
+
+	BallState state = BallState::OnPaddle;
+	
+	bool isLaunched;
 };

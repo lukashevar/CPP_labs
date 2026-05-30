@@ -1,4 +1,5 @@
 #include "entities/Ball.h"
+#include "Config.h"
 
 Ball::Ball() {
 	shape.setRadius(10.f);
@@ -13,6 +14,9 @@ Ball::Ball() {
 
 
 void Ball::update(float dt) {
+	if (!isLaunched)
+		return;
+
 	shape.move(velocity * speed * dt);
 
 	sf::Vector2f pos = shape.getPosition();
@@ -22,6 +26,8 @@ void Ball::update(float dt) {
 
 	if (pos.y <= 0.f)
 		velocity.y = -velocity.y;
+
+	
 }
 
 
@@ -55,12 +61,20 @@ sf::FloatRect Ball::getBounds() const {
 }
 
 void Ball::reset() {
-	shape.setPosition(400.f, 300.f);
+	shape.setPosition(Config::BallStartX, Config::BallStartY);
 
-	velocity.x = -1.f;
-	velocity.y = -1.f;
+	velocity = { 0.f, 0.f };
+
+	isLaunched = false;
 }
 
 bool Ball::isOutOfBounds() const {
 	return shape.getPosition().y > 600.f;
+}
+
+void Ball::launch() {
+	if (!isLaunched) {
+		isLaunched = true;
+		velocity = { -1.f, -1.f };
+	}
 }

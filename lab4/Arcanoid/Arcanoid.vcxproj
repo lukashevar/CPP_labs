@@ -35,6 +35,7 @@
     <ClInclude Include="include\entities\Block.h" />
     <ClInclude Include="include\entities\Paddle.h" />
     <ClInclude Include="include\ui\HUD.h" />
+    <ClInclude Include="include\Config.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
