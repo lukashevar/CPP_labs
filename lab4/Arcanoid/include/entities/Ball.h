@@ -28,8 +28,8 @@ public:
 
 private:
 	sf::CircleShape shape;
-	sf::Vector2f velocity;
 
+	sf::Vector2f velocity;
 	float speed;
 
 	BallState state = BallState::OnPaddle;
