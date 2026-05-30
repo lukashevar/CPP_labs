@@ -27,12 +27,14 @@
     <ClCompile Include="src\entities\Ball.cpp" />
     <ClCompile Include="src\entities\Block.cpp" />
     <ClCompile Include="src\entities\Paddle.cpp" />
+    <ClCompile Include="src\ui\HUD.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\Game.h" />
     <ClInclude Include="include\entities\Ball.h" />
     <ClInclude Include="include\entities\Block.h" />
     <ClInclude Include="include\entities\Paddle.h" />
+    <ClInclude Include="include\ui\HUD.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

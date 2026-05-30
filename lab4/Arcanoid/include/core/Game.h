@@ -7,6 +7,7 @@
 #include "entities/Paddle.h"
 #include "entities/Ball.h"
 #include "entities/Block.h"
+#include "ui/HUD.h"
 
 
 class Game {
@@ -39,6 +40,9 @@ private:
 	Ball ball;
 	std::vector<Block> blocks;
 
+	HUD hud;
+
 	int lives;
+	int score;
 	bool gameOver;
 };

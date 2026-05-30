@@ -8,6 +8,9 @@ Game::Game()
 	window.setFramerateLimit(60);
 	
 	createLevel();
+
+	score = 0;
+	hud.updateScore(score);
 }
 
 
@@ -58,9 +61,14 @@ void Game::update(float dt) {
 	if (ball.isOutOfBounds()) {
 		lives--;
 
+		hud.updateLives(lives);
+
 		if (lives <= 0) {
 			gameOver = true;
+			hud.showGameOver(true);
+			hud.updateLives(0);
 		}
+
 		else {
 			ball.reset();
 
@@ -78,6 +86,7 @@ void Game::render() {
 	for (auto& block : blocks) {
 		block.render(window);
 	}
+	hud.render(window);
 
 	window.display();
 }
@@ -131,6 +140,9 @@ void Game::checkBlockCollisions() {
 		if (ballBounds.intersects(block.getBounds())) {
 			block.destroy();
 
+			score += 10;
+			hud.updateScore(score);
+
 			sf::Vector2f vel = ball.getVelocity();
 			vel.y = -vel.y;
 			ball.setVelocity(vel);
@@ -142,6 +154,7 @@ void Game::checkBlockCollisions() {
 
 void Game::restartGame() {
 	lives = 3;
+	score = 0;
 	gameOver = false;
 
 	blocks.clear();
@@ -149,4 +162,8 @@ void Game::restartGame() {
 
 	ball.reset();
 	paddle.setPosition(300.f, 550.f);
+
+	hud.showGameOver(false);
+	hud.updateLives(lives);
+	hud.updateScore(score);
 }
