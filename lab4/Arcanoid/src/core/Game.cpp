@@ -1,11 +1,13 @@
 #include "core/Game.h"
 #include "physics/CollisionSystem.h"
+#include "Config.h"
 
 Game::Game()
 	: window(sf::VideoMode(800, 600), "Arkanoid"),
 	isRunning(true),
 	lives(3),
-	gameOver(false) {
+	gameOver(false),
+	gameWon(false) {
 	window.setFramerateLimit(60);
 	
 	createLevel();
@@ -55,15 +57,26 @@ void Game::handleInput(const sf::Event& event) {
 		if (event.key.code == sf::Keyboard::R) {
 			restartGame();
 		}
+
+		if (gameOver || gameWon) {
+			if (event.key.code == sf::Keyboard::R) {
+				restartGame();
+			}
+
+			return;
+		}
 	}
 }
 
 
 void Game::update(float dt) {
+	if (gameOver || gameWon)
+		return;
+
 	paddle.update(dt);
 	ball.update(dt);
 
-	CollisionSystem::checkBallWalls(ball, 800.f, 600.f);
+	CollisionSystem::checkBallWalls(ball, Config::windowWidth, Config::windowHeight);
 	CollisionSystem::checkBallPaddle(ball, paddle);
 	if (CollisionSystem::checkBallBlocks(ball, blocks)) {
 		score += 10; 
@@ -85,6 +98,11 @@ void Game::update(float dt) {
 			ball.reset();
 			paddle.reset();
 		}
+	}
+
+	if (isLevelCompleted()) {
+		gameWon = true;
+		hud.showWin(true);
 	}
 }
 
@@ -122,6 +140,7 @@ void Game::restartGame() {
 	lives = 3;
 	score = 0;
 	gameOver = false;
+	gameWon = false;
 
 	blocks.clear();
 	createLevel();
@@ -130,6 +149,16 @@ void Game::restartGame() {
 	paddle.reset();
 
 	hud.showGameOver(false);
+	hud.showWin(false);
 	hud.updateLives(lives);
 	hud.updateScore(score);
 }
+
+bool Game::isLevelCompleted() const {
+	for (const auto& block : blocks) {
+		if (!block.isDestroyed())
+			return false;
+	}
+	return true;
+}
+

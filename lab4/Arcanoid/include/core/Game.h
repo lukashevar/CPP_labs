@@ -27,6 +27,8 @@ private:
 	void createLevel();
 	void restartGame();
 
+	bool isLevelCompleted() const;
+
 
 	sf::RenderWindow window;
 	sf::Clock clock;

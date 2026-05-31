@@ -12,6 +12,7 @@ public:
 	void render(sf::RenderWindow& window);
 
 	void showGameOver(bool show);
+	void showWin(bool show);
 
 private:
 	sf::Font font;
@@ -21,6 +22,8 @@ private:
 
 	sf::Text gameOverText;
 	sf::Text restartText;
+	sf::Text winText;
 
 	bool gameOverVisible;
+	bool winVisible;
 };

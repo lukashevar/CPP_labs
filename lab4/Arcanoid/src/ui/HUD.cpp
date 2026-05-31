@@ -29,6 +29,12 @@ HUD::HUD()
 	gameOverText.setPosition(250.f, 250.f);
 	restartText.setPosition(250.f, 320.f);
 
+	winText.setFont(font);
+	winText.setString("YOU WIN!");
+	winText.setCharacterSize(48);
+	winText.setFillColor(sf::Color::Green);
+	winText.setPosition(260.f, 250.f);
+
 	updateLives(3);
 	updateScore(0);
 }
@@ -45,12 +51,21 @@ void HUD::showGameOver(bool show) {
 	gameOverVisible = show;
 }
 
+void HUD::showWin(bool show) {
+	winVisible = show;
+}
+
 void HUD::render(sf::RenderWindow& window) {
 	window.draw(livesText);
 	window.draw(scoreText);
 
 	if (gameOverVisible) {
 		window.draw(gameOverText);
+		window.draw(restartText);
+	}
+
+	if (winVisible) {
+		window.draw(winText);
 		window.draw(restartText);
 	}
 }
