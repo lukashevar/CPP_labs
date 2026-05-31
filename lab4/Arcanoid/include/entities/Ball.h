@@ -24,8 +24,10 @@ public:
 	sf::Vector2f getVelocity() const;
 	sf::FloatRect getBounds() const;
 	float getSpeed() const;
+	float getRadius() const;
 
 	void setVelocity(const sf::Vector2f& v);
+	void setSpeed(float newSpeed);
 
 private:
 	sf::CircleShape shape;

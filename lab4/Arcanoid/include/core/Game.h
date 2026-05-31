@@ -24,10 +24,6 @@ private:
 
 	void handleInput(const sf::Event& event);
 
-	void checkCollision();
-	void checkBlockCollisions();
-	void checkWallCollisions();
-
 	void createLevel();
 	void restartGame();
 
@@ -46,4 +42,5 @@ private:
 	int lives;
 	int score;
 	bool gameOver;
+	bool gameWon;
 };

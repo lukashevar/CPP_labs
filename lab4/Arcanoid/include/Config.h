@@ -6,4 +6,7 @@ namespace Config {
 
 	constexpr float BallStartX = 400.f;
 	constexpr float BallStartY = 540.f;
+
+	constexpr float windowWidth = 800.f;
+	constexpr float windowHeight = 600.f;
 }

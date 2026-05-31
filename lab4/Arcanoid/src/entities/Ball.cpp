@@ -73,3 +73,11 @@ void Ball::launch() {
 		velocity = { 0.f, -1.f };
 	}
 }
+
+float Ball::getRadius() const {
+	return shape.getRadius();
+}
+
+void Ball::setSpeed(float newSpeed) {
+	speed = newSpeed;
+}
