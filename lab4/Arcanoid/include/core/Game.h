@@ -8,6 +8,7 @@
 #include "entities/Ball.h"
 #include "entities/Block.h"
 #include "ui/HUD.h"
+#include <memory>
 
 
 class Game {
@@ -37,7 +38,7 @@ private:
 
 	Paddle paddle;
 	Ball ball;
-	std::vector<Block> blocks;
+	std::vector<std::unique_ptr<Block>> blocks;
 
 	HUD hud;
 

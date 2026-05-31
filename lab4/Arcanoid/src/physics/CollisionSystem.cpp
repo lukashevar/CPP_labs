@@ -56,95 +56,95 @@ void CollisionSystem::checkBallPaddle(
 }
 
 bool CollisionSystem::checkBallBlocks(
-	Ball& ball,
-	std::vector<Block>& blocks)
+    Ball& ball,
+    std::vector<std::unique_ptr<Block>>& blocks)
 {
-	sf::FloatRect ballBounds = ball.getBounds();
-	float radius = ball.getRadius();
+    sf::FloatRect ballBounds = ball.getBounds();
+    float radius = ball.getRadius();
 
-	for (auto& block : blocks)
-	{
-		if (block.isDestroyed())
-			continue;
+    for (auto& block : blocks)
+    {
+        if (block->isDestroyed())
+            continue;
 
-		sf::FloatRect blockBounds = block.getBounds();
+        sf::FloatRect blockBounds = block->getBounds();
 
-		if (!ballBounds.intersects(blockBounds))
-			continue;
+        if (!ballBounds.intersects(blockBounds))
+            continue;
 
-		block.destroy();
+        block->onHit(ball);
 
-		float ballCenterX =
-			ballBounds.left + ballBounds.width / 2.f;
+        float ballCenterX =
+            ballBounds.left + ballBounds.width / 2.f;
 
-		float ballCenterY =
-			ballBounds.top + ballBounds.height / 2.f;
+        float ballCenterY =
+            ballBounds.top + ballBounds.height / 2.f;
 
-		float blockCenterX =
-			blockBounds.left + blockBounds.width / 2.f;
+        float blockCenterX =
+            blockBounds.left + blockBounds.width / 2.f;
 
-		float blockCenterY =
-			blockBounds.top + blockBounds.height / 2.f;
+        float blockCenterY =
+            blockBounds.top + blockBounds.height / 2.f;
 
-		float dx = ballCenterX - blockCenterX;
-		float dy = ballCenterY - blockCenterY;
+        float dx = ballCenterX - blockCenterX;
+        float dy = ballCenterY - blockCenterY;
 
-		float overlapX =
-			(ballBounds.width + blockBounds.width) / 2.f
-			- std::abs(dx);
+        float overlapX =
+            (ballBounds.width + blockBounds.width) / 2.f
+            - std::abs(dx);
 
-		float overlapY =
-			(ballBounds.height + blockBounds.height) / 2.f
-			- std::abs(dy);
+        float overlapY =
+            (ballBounds.height + blockBounds.height) / 2.f
+            - std::abs(dy);
 
-		sf::Vector2f vel = ball.getVelocity();
-		sf::Vector2f pos = ball.getPosition();
+        sf::Vector2f vel = ball.getVelocity();
+        sf::Vector2f pos = ball.getPosition();
 
-		if (overlapX < overlapY)
-		{
-			vel.x = -vel.x;
+        if (overlapX < overlapY)
+        {
+            vel.x = -vel.x;
 
-			if (dx > 0.f)
-			{
-				ball.setPosition(
-					blockBounds.left +
-					blockBounds.width +
-					radius,
-					pos.y);
-			}
-			else
-			{
-				ball.setPosition(
-					blockBounds.left -
-					radius,
-					pos.y);
-			}
-		}
-		else
-		{
-			vel.y = -vel.y;
+            if (dx > 0.f)
+            {
+                ball.setPosition(
+                    blockBounds.left +
+                    blockBounds.width +
+                    radius,
+                    pos.y);
+            }
+            else
+            {
+                ball.setPosition(
+                    blockBounds.left -
+                    radius,
+                    pos.y);
+            }
+        }
+        else
+        {
+            vel.y = -vel.y;
 
-			if (dy > 0.f)
-			{
-				ball.setPosition(
-					pos.x,
-					blockBounds.top +
-					blockBounds.height +
-					radius);
-			}
-			else
-			{
-				ball.setPosition(
-					pos.x,
-					blockBounds.top -
-					radius);
-			}
-		}
+            if (dy > 0.f)
+            {
+                ball.setPosition(
+                    pos.x,
+                    blockBounds.top +
+                    blockBounds.height +
+                    radius);
+            }
+            else
+            {
+                ball.setPosition(
+                    pos.x,
+                    blockBounds.top -
+                    radius);
+            }
+        }
 
-		ball.setVelocity(vel);
+        ball.setVelocity(vel);
 
-		return true;
-	}
+        return true;
+    }
 
-	return false;
+    return false;
 }

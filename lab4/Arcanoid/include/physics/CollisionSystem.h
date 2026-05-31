@@ -1,10 +1,11 @@
 #pragma once
 
 #include "entities/Ball.h"
-#include "entities/Block.h"
+#include "blocks/Block.h"
 #include "entities/Paddle.h"
 
 #include <vector>
+#include <memory>
 
 class CollisionSystem {
 public:
@@ -21,6 +22,6 @@ public:
 
 	static bool checkBallBlocks(
 		Ball& ball,
-		std::vector<Block>& blocks
+		std::vector<std::unique_ptr<Block>>& blocks
 	);
 };
