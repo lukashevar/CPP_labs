@@ -12,7 +12,7 @@ public:
 
 	virtual ~Block() = default;
 
-	virtual void onHit(Ball& ball);
+	virtual void onHit(Ball& ball) = 0;
 
 	virtual bool isDestroyed() const;
 
@@ -23,4 +23,6 @@ public:
 protected:
 	sf::RectangleShape shape;
 	bool destroyed;
+
+	void destroy();
 };

@@ -8,9 +8,14 @@ Ball::Ball() {
 
 	shape.setPosition(Config::BallStartX, Config::BallStartY);
 
-	speed = 400.f;
+	baseSpeed = 400.f;
+	currentSpeed = baseSpeed;
+
 	velocity = { 0.f, 0.f };
 	isLaunched = false;
+
+	speedBoostActive = false;
+	speedBoostTimer = 0.f;
 }
 
 
@@ -18,7 +23,18 @@ void Ball::update(float dt) {
 	if (!isLaunched)
 		return;
 
-	shape.move(velocity * speed * dt);
+	if (speedBoostActive)
+	{
+		speedBoostTimer -= dt;
+
+		if (speedBoostTimer <= 0.f)
+		{
+			speedBoostActive = false;
+			currentSpeed = baseSpeed;
+		}
+	}
+
+	shape.move(velocity * currentSpeed * dt);
 }
 
 
@@ -41,18 +57,16 @@ sf::Vector2f Ball::getVelocity() const {
 	return velocity;
 }
 
-float Ball::getSpeed() const {
-	return speed;
-}
-
-
 void Ball::setVelocity(const sf::Vector2f& v) {
 	velocity = v;
 }
 
-
 sf::FloatRect Ball::getBounds() const {
 	return shape.getGlobalBounds();
+}
+
+float Ball::getRadius() const {
+	return shape.getRadius();
 }
 
 void Ball::reset() {
@@ -74,10 +88,8 @@ void Ball::launch() {
 	}
 }
 
-float Ball::getRadius() const {
-	return shape.getRadius();
-}
-
-void Ball::setSpeed(float newSpeed) {
-	speed = newSpeed;
+void Ball::applySpeedBoost(float factor, float duration) {
+	currentSpeed = baseSpeed * factor;
+	speedBoostTimer = duration;
+	speedBoostActive = true;
 }

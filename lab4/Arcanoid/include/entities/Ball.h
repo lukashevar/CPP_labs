@@ -28,12 +28,18 @@ public:
 
 	void setVelocity(const sf::Vector2f& v);
 	void setSpeed(float newSpeed);
+	void multiplySpeed(float factor);
+	void applySpeedBoost(float factor, float duration);
 
 private:
 	sf::CircleShape shape;
 
 	sf::Vector2f velocity;
-	float speed;
+	float baseSpeed;
+	float currentSpeed;
+
+	bool speedBoostActive = false;
+	float speedBoostTimer = 0.f;
 
 	BallState state = BallState::OnPaddle;
 	

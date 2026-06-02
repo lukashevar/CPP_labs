@@ -14,6 +14,6 @@ void HpBlock::onHit(Ball& ball)
 
     if (hp <= 0)
     {
-        destroyed = true;
+        destroy();
     }
 }

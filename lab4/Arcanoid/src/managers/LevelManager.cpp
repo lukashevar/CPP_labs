@@ -1,8 +1,9 @@
 #include "managers/LevelManager.h"
 
-#include "blocks/Block.h"
+#include "blocks/SimpleBlock.h"
 #include "blocks/HpBlock.h"
 #include "blocks/UnbreakableBlock.h"
+#include "blocks/SpeedBoostBlock.h"
 #include "Config.h"
 
 
@@ -14,9 +15,9 @@ LevelManager::LevelManager()
     {
         LevelData{
             {
+                "1111441111",
                 "1111111111",
-                "1111111111",
-                "1111111111",
+                "1111441111",
                 "1111111111"
             }
         },
@@ -26,16 +27,16 @@ LevelManager::LevelManager()
                 "2222222222",
                 "1111111111",
                 "2222222222",
-                "1111111111"
+                "1114444111"
             }
         },
 
         LevelData{
             {
                 "3333333333",
-                "1111111111",
+                "1114444111",
                 "2222222222",
-                "2222222222",
+                "2224444222",
                 "2222222222"
             }
         }
@@ -74,10 +75,9 @@ void LevelManager::createBlocks(const LevelData& level)
             {
             case '1':
                 blocks.push_back(
-                    std::make_unique<Block>(
+                    std::make_unique<SimpleBlock>(
                         sf::Vector2f(x, y),
-                        blockSize,
-                        sf::Color::Blue
+                        blockSize
                     )
                 );
                 break;
@@ -94,6 +94,15 @@ void LevelManager::createBlocks(const LevelData& level)
             case '3':
                 blocks.push_back(
                     std::make_unique<UnbreakableBlock>(
+                        sf::Vector2f(x, y),
+                        blockSize
+                    )
+                );
+                break;
+
+            case '4':
+                blocks.push_back(
+                    std::make_unique<SpeedBoostBlock>(
                         sf::Vector2f(x, y),
                         blockSize
                     )

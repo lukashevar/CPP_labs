@@ -11,11 +11,6 @@ Block::Block(
     shape.setFillColor(color);
 }
 
-void Block::onHit(Ball& ball)
-{
-    destroyed = true;
-}
-
 bool Block::isDestroyed() const
 {
     return destroyed;
@@ -30,4 +25,8 @@ void Block::render(sf::RenderWindow& window)
 sf::FloatRect Block::getBounds() const
 {
     return shape.getGlobalBounds();
+}
+
+void Block::destroy() {
+    destroyed = true;
 }
