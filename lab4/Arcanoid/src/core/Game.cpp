@@ -2,17 +2,26 @@
 #include "physics/CollisionSystem.h"
 #include "Config.h"
 
+#include <memory>
+
 Game::Game()
-	: window(sf::VideoMode(800, 600), "Arkanoid"),
+	: window(
+		sf::VideoMode(
+			Config::windowWidth,
+			Config::windowHeight),
+		"Arkanoid"),
 	isRunning(true),
 	lives(3),
 	gameOver(false),
-	gameWon(false) {
+	gameWon(false)
+{
 	window.setFramerateLimit(60);
-	
-	createLevel();
+
+	levelManager.loadLevel(3);
 
 	score = 0;
+
+	hud.updateLives(lives);
 	hud.updateScore(score);
 
 	paddle.reset();
@@ -48,23 +57,29 @@ void Game::proccessEvents() {
 }
 
 
-void Game::handleInput(const sf::Event& event) {
-	if (event.type == sf::Event::KeyPressed) {
-		if (event.key.code == sf::Keyboard::Space) {
-			ball.launch();
-		}
+void Game::handleInput(const sf::Event& event)
+{
+	if (event.type != sf::Event::KeyPressed)
+		return;
 
-		if (event.key.code == sf::Keyboard::R) {
+	if (gameOver || gameWon)
+	{
+		if (event.key.code == sf::Keyboard::R)
+		{
 			restartGame();
 		}
 
-		if (gameOver || gameWon) {
-			if (event.key.code == sf::Keyboard::R) {
-				restartGame();
-			}
+		return;
+	}
 
-			return;
-		}
+	if (event.key.code == sf::Keyboard::Space)
+	{
+		ball.launch();
+	}
+
+	if (event.key.code == sf::Keyboard::R)
+	{
+		restartGame();
 	}
 }
 
@@ -78,8 +93,8 @@ void Game::update(float dt) {
 
 	CollisionSystem::checkBallWalls(ball, Config::windowWidth, Config::windowHeight);
 	CollisionSystem::checkBallPaddle(ball, paddle);
-	if (CollisionSystem::checkBallBlocks(ball, blocks)) {
-		score += 10; 
+	if (CollisionSystem::checkBallBlocks(ball, levelManager.getBlocks())){
+		score += 10;
 		hud.updateScore(score);
 	}
 	
@@ -100,9 +115,21 @@ void Game::update(float dt) {
 		}
 	}
 
-	if (isLevelCompleted()) {
-		gameWon = true;
-		hud.showWin(true);
+	if (levelManager.isLevelCompleted())
+	{
+		int next = levelManager.getCurrentLevel() + 1;
+
+		if (next < 3)
+		{
+			levelManager.loadLevel(next);
+
+			ball.reset();
+			paddle.reset();
+		}
+		else
+		{
+			gameWon = true;
+		}
 	}
 }
 
@@ -112,29 +139,16 @@ void Game::render() {
 
 	paddle.render(window);
 	ball.render(window);
-	for (auto& block : blocks) {
-		block.render(window);
+	for (auto& block : levelManager.getBlocks())
+	{
+		block->render(window);
 	}
 	hud.render(window);
 
 	window.display();
 }
 
-void Game::createLevel() {
-	blocks.clear();
 
-	for (int y = 0; y < 5; y++)
-	{
-		for (int x = 0; x < 10; x++)
-		{
-			blocks.emplace_back(
-				sf::Vector2f(60.f + x * 65.f, 50.f + y * 30.f),
-				sf::Vector2f(60.f, 20.f),
-				sf::Color::Blue
-			);
-		}
-	}
-}
 
 void Game::restartGame() {
 	lives = 3;
@@ -142,8 +156,7 @@ void Game::restartGame() {
 	gameOver = false;
 	gameWon = false;
 
-	blocks.clear();
-	createLevel();
+	levelManager.loadLevel(0);
 
 	ball.reset();
 	paddle.reset();
@@ -153,12 +166,3 @@ void Game::restartGame() {
 	hud.updateLives(lives);
 	hud.updateScore(score);
 }
-
-bool Game::isLevelCompleted() const {
-	for (const auto& block : blocks) {
-		if (!block.isDestroyed())
-			return false;
-	}
-	return true;
-}
-

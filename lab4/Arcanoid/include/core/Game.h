@@ -6,8 +6,10 @@
 
 #include "entities/Paddle.h"
 #include "entities/Ball.h"
-#include "entities/Block.h"
+#include "blocks/Block.h"
 #include "ui/HUD.h"
+#include "managers/LevelManager.h"
+
 #include <memory>
 
 
@@ -25,11 +27,7 @@ private:
 
 	void handleInput(const sf::Event& event);
 
-	void createLevel();
 	void restartGame();
-
-	bool isLevelCompleted() const;
-
 
 	sf::RenderWindow window;
 	sf::Clock clock;
@@ -38,7 +36,8 @@ private:
 
 	Paddle paddle;
 	Ball ball;
-	std::vector<std::unique_ptr<Block>> blocks;
+	
+	LevelManager levelManager;
 
 	HUD hud;
 

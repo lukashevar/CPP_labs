@@ -8,7 +8,7 @@ HpBlock::HpBlock(
 {
 }
 
-void HpBlock::onHit(Ball&)
+void HpBlock::onHit(Ball& ball)
 {
     hp--;
 

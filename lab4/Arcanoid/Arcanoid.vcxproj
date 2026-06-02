@@ -23,18 +23,24 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\sfml\SFML-2.6.1\include;$(ProjectDir)include</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\sfml\SFML-2.6.1\include;$(ProjectDir)include</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="src\blocks\Block.cpp" />
+    <ClCompile Include="src\blocks\HpBlock.cpp" />
+    <ClCompile Include="src\blocks\UnbreakableBlock.cpp" />
     <ClCompile Include="src\core\Game.cpp" />
     <ClCompile Include="src\entities\Ball.cpp" />
-    <ClCompile Include="src\entities\Block.cpp" />
     <ClCompile Include="src\entities\Paddle.cpp" />
+    <ClCompile Include="src\managers\LevelManager.cpp" />
     <ClCompile Include="src\physics\CollisionSystem.cpp" />
     <ClCompile Include="src\ui\HUD.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\blocks\Block.h" />
+    <ClInclude Include="include\blocks\HpBlock.h" />
+    <ClInclude Include="include\blocks\UnbreakableBlock.h" />
     <ClInclude Include="include\core\Game.h" />
     <ClInclude Include="include\entities\Ball.h" />
-    <ClInclude Include="include\entities\Block.h" />
     <ClInclude Include="include\entities\Paddle.h" />
+    <ClInclude Include="include\managers\LevelManager.h" />
     <ClInclude Include="include\physics\CollisionSystem.h" />
     <ClInclude Include="include\ui\HUD.h" />
     <ClInclude Include="include\Config.h" />

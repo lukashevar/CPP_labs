@@ -9,4 +9,10 @@ namespace Config {
 
 	constexpr float windowWidth = 800.f;
 	constexpr float windowHeight = 600.f;
+
+	constexpr float blockWidth = 64.f;
+	constexpr float blockHeight = 32.f;
+
+	constexpr float spacingX = 5.f;
+	constexpr float spacingY = 5.f;
 }
