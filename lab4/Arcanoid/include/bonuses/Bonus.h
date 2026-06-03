@@ -20,6 +20,7 @@ public:
 	void collect();
 
 	sf::FloatRect getBounds() const;
+	bool isOutOfBounds() const;
 
 protected:
 	sf::CircleShape shape;

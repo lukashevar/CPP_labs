@@ -20,6 +20,10 @@ public:
 
 	bool isOutOfBounds() const;
 
+	void enableStickyMode();
+	bool isStickyMode() const;
+	void disableStickyMode();
+
 	sf::Vector2f getPosition() const;
 	sf::Vector2f getVelocity() const;
 	sf::FloatRect getBounds() const;
@@ -27,8 +31,6 @@ public:
 	float getRadius() const;
 
 	void setVelocity(const sf::Vector2f& v);
-	void setSpeed(float newSpeed);
-	void multiplySpeed(float factor);
 	void applySpeedBoost(float factor, float duration);
 
 private:
@@ -44,4 +46,6 @@ private:
 	BallState state = BallState::OnPaddle;
 	
 	bool isLaunched;
+
+	bool stickyMode = false;
 };

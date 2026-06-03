@@ -55,15 +55,16 @@ void CollisionSystem::checkBallPaddle(
 	ball.setVelocity(vel);
 }
 
-bool CollisionSystem::checkBallBlocks(
+std::vector<Block*> CollisionSystem::checkBallBlocks(
     Ball& ball,
-    std::vector<std::unique_ptr<Block>>& blocks)
-{
+    std::vector<std::unique_ptr<Block>>& blocks) {
+
+    std::vector<Block*> destroyedBlocks;
+
     sf::FloatRect ballBounds = ball.getBounds();
     float radius = ball.getRadius();
 
-    for (auto& block : blocks)
-    {
+    for (auto& block : blocks) {
         if (block->isDestroyed())
             continue;
 
@@ -72,7 +73,13 @@ bool CollisionSystem::checkBallBlocks(
         if (!ballBounds.intersects(blockBounds))
             continue;
 
+        bool wasDestroyed = block->isDestroyed();
+
         block->onHit(ball);
+
+        if (!wasDestroyed && block->isDestroyed()) {
+            destroyedBlocks.push_back(block.get());
+        }
 
         float ballCenterX =
             ballBounds.left + ballBounds.width / 2.f;
@@ -100,40 +107,34 @@ bool CollisionSystem::checkBallBlocks(
         sf::Vector2f vel = ball.getVelocity();
         sf::Vector2f pos = ball.getPosition();
 
-        if (overlapX < overlapY)
-        {
+        if (overlapX < overlapY) {
             vel.x = -vel.x;
 
-            if (dx > 0.f)
-            {
+            if (dx > 0.f) {
                 ball.setPosition(
                     blockBounds.left +
                     blockBounds.width +
                     radius,
                     pos.y);
             }
-            else
-            {
+            else {
                 ball.setPosition(
                     blockBounds.left -
                     radius,
                     pos.y);
             }
         }
-        else
-        {
+        else {
             vel.y = -vel.y;
 
-            if (dy > 0.f)
-            {
+            if (dy > 0.f) {
                 ball.setPosition(
                     pos.x,
                     blockBounds.top +
                     blockBounds.height +
                     radius);
             }
-            else
-            {
+            else {
                 ball.setPosition(
                     pos.x,
                     blockBounds.top -
@@ -143,8 +144,9 @@ bool CollisionSystem::checkBallBlocks(
 
         ball.setVelocity(vel);
 
-        return true;
-    }
+        break;
 
-    return false;
+        return destroyedBlocks;
+
+    }
 }

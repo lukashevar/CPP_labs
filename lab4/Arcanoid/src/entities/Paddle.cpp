@@ -12,19 +12,36 @@ Paddle::Paddle() {
 }
 
 
-void Paddle::update(float dt) {
+void Paddle::update(float dt)
+{
 	handleInput(dt);
 
 	shape.move(velocity * dt);
 
-	if (shape.getPosition().x < 0)
-		shape.setPosition(0, shape.getPosition().y);
+	if (shape.getPosition().x < 0.f)
+	{
+		shape.setPosition(0.f, shape.getPosition().y);
+	}
 
-	if (shape.getPosition().x + shape.getSize().x > 800)
-		shape.setPosition(800 - shape.getSize().x, shape.getPosition().y);
+	if (shape.getPosition().x + shape.getSize().x > 800.f)
+	{
+		shape.setPosition(
+			800.f - shape.getSize().x,
+			shape.getPosition().y
+		);
+	}
 
+	if (widthBonusActive)
+	{
+		widthBonusTimer -= dt;
+
+		if (widthBonusTimer <= 0.f)
+		{
+			widthBonusActive = false;
+			setWidth(baseWidth);
+		}
+	}
 }
-
 
 void Paddle::handleInput(float dt) {
 	velocity.x = 0.f;
@@ -62,4 +79,34 @@ sf::FloatRect Paddle::getBounds() const {
 
 void Paddle::reset() {
 	shape.setPosition(Config::PaddleStartX, Config::PaddleStartY);
+}
+
+float Paddle::getWidth() const
+{
+	return shape.getSize().x;
+}
+
+void Paddle::setWidth(float width)
+{
+	float centerX =
+		shape.getPosition().x +
+		shape.getSize().x / 2.f;
+
+	shape.setSize({
+		width,
+		shape.getSize().y
+		});
+
+	shape.setPosition(
+		centerX - width / 2.f,
+		shape.getPosition().y
+	);
+}
+
+void Paddle::activateWidthBonus(float duration)
+{
+	setWidth(baseWidth * 1.5f);
+
+	widthBonusActive = true;
+	widthBonusTimer = duration;
 }

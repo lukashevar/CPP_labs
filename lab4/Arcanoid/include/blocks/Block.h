@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 
+class Bonus;
+
 class Ball;
 
 class Block {
@@ -19,10 +21,16 @@ public:
 	virtual void render(sf::RenderWindow& window);
 
 	sf::FloatRect getBounds() const;
+	sf::Vector2f getCenter() const;
+
+	bool containsBonus() const;
+
+	void setBonus(bool value);
 
 protected:
 	sf::RectangleShape shape;
 	bool destroyed;
+	bool hasBonus = false;
 
 	void destroy();
 };

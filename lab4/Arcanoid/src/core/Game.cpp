@@ -1,6 +1,9 @@
 #include "core/Game.h"
 #include "physics/CollisionSystem.h"
 #include "Config.h"
+#include "bonuses/ExpandPaddleBonus.h"
+#include "bonuses/BallSpeedBonus.h"
+#include "bonuses/StickyBonus.h"
 
 #include <memory>
 
@@ -91,11 +94,39 @@ void Game::update(float dt) {
 	paddle.update(dt);
 	ball.update(dt);
 
+	for (auto& bonus : bonuses) {
+		bonus->update(dt);
+
+		if (bonus->isCollected())
+			continue;
+
+		if (bonus->getBounds().intersects(paddle.getBounds())) {
+			bonus->apply(paddle, ball);
+			bonus->collect();
+		}
+	}
+
+	bonuses.erase(
+		std::remove_if(
+			bonuses.begin(),
+			bonuses.end(),
+			[](const auto& bonus) {
+				return bonus->isCollected() || bonus->isOutOfBounds();
+			}),
+		bonuses.end()
+	);
+
 	CollisionSystem::checkBallWalls(ball, Config::windowWidth, Config::windowHeight);
 	CollisionSystem::checkBallPaddle(ball, paddle);
-	if (CollisionSystem::checkBallBlocks(ball, levelManager.getBlocks())){
+	auto destroyed = CollisionSystem::checkBallBlocks(ball, levelManager.getBlocks());
+
+	for (auto* block : destroyed) {
 		score += 10;
 		hud.updateScore(score);
+
+		if (block->containsBonus()) {
+			spawnBonus(block->getCenter());
+		}
 	}
 	
 	if (ball.isOutOfBounds()) {
@@ -115,19 +146,16 @@ void Game::update(float dt) {
 		}
 	}
 
-	if (levelManager.isLevelCompleted())
-	{
+	if (levelManager.isLevelCompleted()) {
 		int next = levelManager.getCurrentLevel() + 1;
 
-		if (next < 3)
-		{
+		if (next < 3) {
 			levelManager.loadLevel(next);
 
 			ball.reset();
 			paddle.reset();
 		}
-		else
-		{
+		else {
 			gameWon = true;
 		}
 	}
@@ -139,10 +167,15 @@ void Game::render() {
 
 	paddle.render(window);
 	ball.render(window);
-	for (auto& block : levelManager.getBlocks())
-	{
+
+	for (auto& block : levelManager.getBlocks()) {
 		block->render(window);
 	}
+
+	for (auto& bonus : bonuses) {
+		bonus->render(window);
+	}
+
 	hud.render(window);
 
 	window.display();
@@ -165,4 +198,16 @@ void Game::restartGame() {
 	hud.showWin(false);
 	hud.updateLives(lives);
 	hud.updateScore(score);
+}
+
+void Game::spawnBonus(sf::Vector2f pos)
+{
+	int r = rand() % 3;
+
+	if (r == 0)
+		bonuses.push_back(std::make_unique<ExpandPaddleBonus>(pos));
+	else if (r == 1)
+		bonuses.push_back(std::make_unique<BallSpeedBonus>(pos));
+	else
+		bonuses.push_back(std::make_unique<StickyBonus>(pos));
 }

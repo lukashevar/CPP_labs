@@ -28,7 +28,10 @@
     <ClCompile Include="src\blocks\SimpleBlock.cpp" />
     <ClCompile Include="src\blocks\SpeedBoostBlock.cpp" />
     <ClCompile Include="src\blocks\UnbreakableBlock.cpp" />
+    <ClCompile Include="src\bonuses\BallSpeedBonus.cpp" />
     <ClCompile Include="src\bonuses\Bonus.cpp" />
+    <ClCompile Include="src\bonuses\ExpandPaddleBonus.cpp" />
+    <ClCompile Include="src\bonuses\StickyBonus.cpp" />
     <ClCompile Include="src\core\Game.cpp" />
     <ClCompile Include="src\entities\Ball.cpp" />
     <ClCompile Include="src\entities\Paddle.cpp" />
@@ -42,7 +45,10 @@
     <ClInclude Include="include\blocks\SimpleBlock.h" />
     <ClInclude Include="include\blocks\SpeedBoostBlock.h" />
     <ClInclude Include="include\blocks\UnbreakableBlock.h" />
+    <ClInclude Include="include\bonuses\BallSpeedBonus.h" />
     <ClInclude Include="include\bonuses\Bonus.h" />
+    <ClInclude Include="include\bonuses\ExpandPAddleBonus.h" />
+    <ClInclude Include="include\bonuses\StickyBonus.h" />
     <ClInclude Include="include\core\Game.h" />
     <ClInclude Include="include\entities\Ball.h" />
     <ClInclude Include="include\entities\Paddle.h" />

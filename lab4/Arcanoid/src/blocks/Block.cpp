@@ -30,3 +30,20 @@ sf::FloatRect Block::getBounds() const
 void Block::destroy() {
     destroyed = true;
 }
+
+bool Block::containsBonus() const {
+    return hasBonus;
+}
+
+void Block::setBonus(bool value) {
+    hasBonus = value;
+}
+
+sf::Vector2f Block::getCenter() const {
+    sf::FloatRect bounds = shape.getGlobalBounds();
+
+    return sf::Vector2f(
+        bounds.left + bounds.width * 0.5f,
+        bounds.top + bounds.height * 0.5f
+    );
+}

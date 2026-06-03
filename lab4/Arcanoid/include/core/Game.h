@@ -9,6 +9,7 @@
 #include "blocks/Block.h"
 #include "ui/HUD.h"
 #include "managers/LevelManager.h"
+#include "bonuses/Bonus.h"
 
 #include <memory>
 
@@ -29,6 +30,8 @@ private:
 
 	void restartGame();
 
+	void spawnBonus(sf::Vector2f pos);
+
 	sf::RenderWindow window;
 	sf::Clock clock;
 
@@ -38,6 +41,7 @@ private:
 	Ball ball;
 	
 	LevelManager levelManager;
+	std::vector<std::unique_ptr<Bonus>> bonuses;
 
 	HUD hud;
 

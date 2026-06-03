@@ -29,3 +29,8 @@ bool Bonus::isCollected() const {
 void Bonus::collect() {
 	collected = true;
 }
+
+bool Bonus::isOutOfBounds() const
+{
+	return shape.getPosition().y > 600.f;
+}

@@ -74,40 +74,60 @@ void LevelManager::createBlocks(const LevelData& level)
             switch (type)
             {
             case '1':
-                blocks.push_back(
-                    std::make_unique<SimpleBlock>(
-                        sf::Vector2f(x, y),
-                        blockSize
-                    )
+            {
+                auto block = std::make_unique<SimpleBlock>(
+                    sf::Vector2f(x, y),
+                    blockSize
                 );
+
+                if (rand() % 5 == 0) 
+                    block->setBonus(true);
+
+                blocks.push_back(std::move(block));
                 break;
+            }
 
             case '2':
-                blocks.push_back(
-                    std::make_unique<HpBlock>(
-                        sf::Vector2f(x, y), 
-                        blockSize
-                    )
+            {
+                auto block = std::make_unique<HpBlock>(
+                    sf::Vector2f(x, y),
+                    blockSize
                 );
+
+                if (rand() % 5 == 0)
+                    block->setBonus(true);
+
+                blocks.push_back(std::move(block));
                 break;
+            }
 
             case '3':
-                blocks.push_back(
-                    std::make_unique<UnbreakableBlock>(
-                        sf::Vector2f(x, y),
-                        blockSize
-                    )
+            {
+                auto block = std::make_unique<UnbreakableBlock>(
+                    sf::Vector2f(x, y),
+                    blockSize
                 );
+
+                if (rand() % 5 == 0) // 20%
+                    block->setBonus(true);
+
+                blocks.push_back(std::move(block));
                 break;
+            }
 
             case '4':
-                blocks.push_back(
-                    std::make_unique<SpeedBoostBlock>(
-                        sf::Vector2f(x, y),
-                        blockSize
-                    )
+            {
+                auto block = std::make_unique<SpeedBoostBlock>(
+                    sf::Vector2f(x, y),
+                    blockSize
                 );
+
+                if (rand() % 5 == 0)
+                    block->setBonus(true);
+
+                blocks.push_back(std::move(block));
                 break;
+            }
 
             default:
                 break;

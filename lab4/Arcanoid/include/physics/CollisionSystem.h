@@ -20,7 +20,7 @@ public:
 		Paddle& paddle
 	);
 
-	static bool checkBallBlocks(
+	static std::vector<Block*> checkBallBlocks(
 		Ball& ball,
 		std::vector<std::unique_ptr<Block>>& blocks
 	);

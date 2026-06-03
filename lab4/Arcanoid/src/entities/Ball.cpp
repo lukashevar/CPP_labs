@@ -93,3 +93,15 @@ void Ball::applySpeedBoost(float factor, float duration) {
 	speedBoostTimer = duration;
 	speedBoostActive = true;
 }
+
+void Ball::enableStickyMode(){
+	stickyMode = true;
+}
+
+bool Ball::isStickyMode() const{
+	return stickyMode;
+}
+
+void Ball::disableStickyMode(){
+	stickyMode = false;
+}
