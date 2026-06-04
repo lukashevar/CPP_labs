@@ -12,26 +12,36 @@ Ball::Ball() {
 	currentSpeed = baseSpeed;
 
 	velocity = { 0.f, 0.f };
-	isLaunched = false;
+	state = BallState::OnPaddle;
 
 	speedBoostActive = false;
 	speedBoostTimer = 0.f;
 }
 
 
-void Ball::update(float dt) {
-	if (!isLaunched)
-		return;
-
-	if (speedBoostActive)
-	{
+void Ball::update(float dt)
+{
+	if (speedBoostActive) {
 		speedBoostTimer -= dt;
-
-		if (speedBoostTimer <= 0.f)
-		{
+		if (speedBoostTimer <= 0.f) {
 			speedBoostActive = false;
 			currentSpeed = baseSpeed;
 		}
+	}
+
+	if (stickyBonusActive) {
+		stickyBonusTimer -= dt;
+
+		if (stickyBonusTimer <= 0.f)
+		{
+			stickyBonusActive = false;
+		}
+	}
+
+	if (state == BallState::OnPaddle ||
+		state == BallState::StickyOnPaddle) 
+	{
+		return;
 	}
 
 	shape.move(velocity * currentSpeed * dt);
@@ -69,21 +79,25 @@ float Ball::getRadius() const {
 	return shape.getRadius();
 }
 
-void Ball::reset() {
+void Ball::reset()
+{
 	shape.setPosition(Config::BallStartX, Config::BallStartY);
 
 	velocity = { 0.f, 0.f };
 
-	isLaunched = false;
+	state = BallState::OnPaddle;
 }
 
 bool Ball::isOutOfBounds() const {
 	return shape.getPosition().y > 600.f;
 }
 
-void Ball::launch() {
-	if (!isLaunched) {
-		isLaunched = true;
+void Ball::launch()
+{
+	if (state == BallState::OnPaddle ||
+		state == BallState::StickyOnPaddle)
+	{
+		state = BallState::Launched;
 		velocity = { 0.f, -1.f };
 	}
 }
@@ -94,14 +108,37 @@ void Ball::applySpeedBoost(float factor, float duration) {
 	speedBoostActive = true;
 }
 
-void Ball::enableStickyMode(){
-	stickyMode = true;
+void Ball::enableSticky()
+{
+	stickyBonusActive = true;
+	stickyBonusTimer = 5.f;
 }
 
-bool Ball::isStickyMode() const{
-	return stickyMode;
+bool Ball::isSticky() const
+{
+	return stickyBonusActive;
 }
 
-void Ball::disableStickyMode(){
-	stickyMode = false;
+bool Ball::isAttached() const
+{
+	return state == BallState::OnPaddle;
+}
+
+void Ball::snapToPaddle(float paddleCenterX, float paddleTopY) 
+{
+	shape.setPosition(paddleCenterX, paddleTopY - getRadius());
+	velocity = { 0.f, 0.f };
+}
+
+void Ball::detach()
+{
+	state = BallState::Launched;
+}
+
+BallState Ball::getState() const {
+	return state;
+}
+
+void Ball::setState(BallState s) {
+	state = s;
 }

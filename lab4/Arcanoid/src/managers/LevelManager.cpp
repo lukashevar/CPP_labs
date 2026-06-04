@@ -108,7 +108,7 @@ void LevelManager::createBlocks(const LevelData& level)
                     blockSize
                 );
 
-                if (rand() % 5 == 0) // 20%
+                if (rand() % 5 == 0) 
                     block->setBonus(true);
 
                 blocks.push_back(std::move(block));
@@ -122,7 +122,7 @@ void LevelManager::createBlocks(const LevelData& level)
                     blockSize
                 );
 
-                if (rand() % 5 == 0)
+                if (rand() % 1 == 0)
                     block->setBonus(true);
 
                 blocks.push_back(std::move(block));

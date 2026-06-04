@@ -104,7 +104,7 @@
     <ClInclude Include="include\blocks\SpeedBoostBlock.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="include\bonuses\ExpandPAddleBonus.h">
+    <ClInclude Include="include\bonuses\ExpandPaddleBonus.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\bonuses\BallSpeedBonus.h">

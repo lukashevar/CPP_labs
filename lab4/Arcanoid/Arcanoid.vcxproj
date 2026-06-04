@@ -47,7 +47,7 @@
     <ClInclude Include="include\blocks\UnbreakableBlock.h" />
     <ClInclude Include="include\bonuses\BallSpeedBonus.h" />
     <ClInclude Include="include\bonuses\Bonus.h" />
-    <ClInclude Include="include\bonuses\ExpandPAddleBonus.h" />
+    <ClInclude Include="include\bonuses\ExpandPaddleBonus.h" />
     <ClInclude Include="include\bonuses\StickyBonus.h" />
     <ClInclude Include="include\core\Game.h" />
     <ClInclude Include="include\entities\Ball.h" />

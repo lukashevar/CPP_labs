@@ -34,9 +34,19 @@ void CollisionSystem::checkBallPaddle(
 ) {
 	sf::FloatRect ballBounds = ball.getBounds();
 	sf::FloatRect paddleBounds = paddle.getBounds();
-
 	if (!ballBounds.intersects(paddleBounds))
 		return;
+
+    if (ball.isSticky()) {
+        float centerX = paddleBounds.left + paddleBounds.width / 2.f;
+        float topY = paddleBounds.top;
+        ball.snapToPaddle(centerX, topY);
+        ball.setState(BallState::StickyOnPaddle);
+        return;
+    }
+
+    if (ball.getVelocity().y <= 0.f)
+        return;
 
 	float paddleCenter = paddleBounds.left + paddleBounds.width / 2.f;
 	float ballCenter = ballBounds.left + ballBounds.width / 2.f;
@@ -145,8 +155,6 @@ std::vector<Block*> CollisionSystem::checkBallBlocks(
         ball.setVelocity(vel);
 
         break;
-
-        return destroyedBlocks;
-
     }
+    return destroyedBlocks;
 }

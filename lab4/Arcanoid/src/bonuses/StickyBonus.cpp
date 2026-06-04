@@ -9,9 +9,7 @@ StickyBonus::StickyBonus(
     shape.setFillColor(sf::Color::Magenta);
 }
 
-void StickyBonus::apply(
-    Paddle&,
-    Ball& ball)
+void StickyBonus::apply(Paddle&, Ball& ball)
 {
-    ball.enableStickyMode();
+    ball.enableSticky();
 }

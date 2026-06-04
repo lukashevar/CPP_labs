@@ -4,7 +4,8 @@
 
 enum class BallState {
 	OnPaddle,
-	Launched
+	Launched,
+	StickyOnPaddle
 };
 
 class Ball {
@@ -20,18 +21,23 @@ public:
 
 	bool isOutOfBounds() const;
 
-	void enableStickyMode();
-	bool isStickyMode() const;
-	void disableStickyMode();
+	void enableSticky();
+	bool isSticky() const;
+	
+	bool isAttached() const;
+	void snapToPaddle(float paddleCenterX, float paddleTopY);
+	void detach();
 
 	sf::Vector2f getPosition() const;
 	sf::Vector2f getVelocity() const;
 	sf::FloatRect getBounds() const;
-	float getSpeed() const;
+	BallState getState() const;
 	float getRadius() const;
 
 	void setVelocity(const sf::Vector2f& v);
 	void applySpeedBoost(float factor, float duration);
+
+	void setState(BallState s);
 
 private:
 	sf::CircleShape shape;
@@ -44,8 +50,7 @@ private:
 	float speedBoostTimer = 0.f;
 
 	BallState state = BallState::OnPaddle;
-	
-	bool isLaunched;
 
-	bool stickyMode = false;
+	bool stickyBonusActive = false;
+	float stickyBonusTimer = 0.f;
 };

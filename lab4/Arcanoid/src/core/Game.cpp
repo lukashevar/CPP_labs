@@ -6,6 +6,7 @@
 #include "bonuses/StickyBonus.h"
 
 #include <memory>
+#include <iostream>
 
 Game::Game()
 	: window(
@@ -92,6 +93,16 @@ void Game::update(float dt) {
 		return;
 
 	paddle.update(dt);
+	
+	if (ball.getState() == BallState::OnPaddle ||
+		ball.getState() == BallState::StickyOnPaddle)
+	{
+		sf::FloatRect pb = paddle.getBounds();
+		float centerX = pb.left + pb.width / 2.f;
+		float topY = pb.top;
+		ball.snapToPaddle(centerX, topY);
+	}
+
 	ball.update(dt);
 
 	for (auto& bonus : bonuses) {
@@ -118,6 +129,10 @@ void Game::update(float dt) {
 
 	CollisionSystem::checkBallWalls(ball, Config::windowWidth, Config::windowHeight);
 	CollisionSystem::checkBallPaddle(ball, paddle);
+	std::cout << "state: " << (int)ball.getState()
+		<< " sticky: " << ball.isSticky()
+		<< " vel: " << ball.getVelocity().x << " " << ball.getVelocity().y
+		<< std::endl;
 	auto destroyed = CollisionSystem::checkBallBlocks(ball, levelManager.getBlocks());
 
 	for (auto* block : destroyed) {
@@ -203,7 +218,7 @@ void Game::restartGame() {
 void Game::spawnBonus(sf::Vector2f pos)
 {
 	int r = rand() % 3;
-
+	
 	if (r == 0)
 		bonuses.push_back(std::make_unique<ExpandPaddleBonus>(pos));
 	else if (r == 1)
