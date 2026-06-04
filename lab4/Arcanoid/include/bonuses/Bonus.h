@@ -7,7 +7,8 @@ enum class BonusEffect {
 	Sticky,
 	SpeedBoost,
 	ExpandPaddle,
-	BottomBarrier
+	BottomBarrier,
+	RandomDirection
 };
 
 class Bonus {

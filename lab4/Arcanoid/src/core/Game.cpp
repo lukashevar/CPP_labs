@@ -5,6 +5,7 @@
 #include "bonuses/BallSpeedBonus.h"
 #include "bonuses/StickyBonus.h"
 #include "bonuses/BottomBarrierBonus.h"
+#include "bonuses/RandomDirectionBonus.h"
 
 #include <memory>
 #include <iostream>
@@ -22,7 +23,7 @@ Game::Game()
 {
 	window.setFramerateLimit(60);
 
-	levelManager.loadLevel(3);
+	levelManager.loadLevel(0);
 
 	score = 0;
 
@@ -128,6 +129,9 @@ void Game::update(float dt) {
 			case BonusEffect::BottomBarrier:
 				barrier = std::make_unique<BottomBarrier>();
 				break;
+			case BonusEffect::RandomDirection:
+				ball.enableRandomDirection();
+				break;
 			default:
 				break;
 			}
@@ -178,9 +182,9 @@ void Game::update(float dt) {
 	}
 
 	if (levelManager.isLevelCompleted()) {
-		int next = levelManager.getCurrentLevel() + 1;
+		size_t next = levelManager.getCurrentLevel() + 1;
 
-		if (next < 3) {
+		if (next < levelManager.getLevelCount()) {
 			levelManager.loadLevel(next);
 
 			ball.reset();
@@ -188,6 +192,7 @@ void Game::update(float dt) {
 		}
 		else {
 			gameWon = true;
+			hud.showWin(true);
 		}
 	}
 }
@@ -237,7 +242,7 @@ void Game::restartGame() {
 
 void Game::spawnBonus(sf::Vector2f pos)
 {
-	int r = rand() % 4;
+	int r = rand() % 5;
 	
 	if (r == 0)
 		bonuses.push_back(std::make_unique<ExpandPaddleBonus>(pos));
@@ -245,7 +250,8 @@ void Game::spawnBonus(sf::Vector2f pos)
 		bonuses.push_back(std::make_unique<BallSpeedBonus>(pos));
 	else if (r == 2)
 		bonuses.push_back(std::make_unique<StickyBonus>(pos));
-	else {
+	else if (r == 3)
 		bonuses.push_back(std::make_unique<BottomBarrierBonus>(pos));
-	}
+	else
+		bonuses.push_back(std::make_unique<RandomDirectionBonus>(pos));	
 }

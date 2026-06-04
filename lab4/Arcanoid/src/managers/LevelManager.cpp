@@ -140,12 +140,11 @@ bool LevelManager::isLevelCompleted() const
 {
     for (const auto& block : blocks)
     {
-        if (!block->isDestroyed())
+        if (block->isBreakable() && !block->isDestroyed())
         {
             return false;
         }
     }
-
     return true;
 }
 
@@ -162,4 +161,8 @@ std::vector<std::unique_ptr<Block>>& LevelManager::getBlocks()
 const std::vector<std::unique_ptr<Block>>& LevelManager::getBlocks() const
 {
     return blocks;
+}
+
+size_t LevelManager::getLevelCount() const {
+    return levels.size();
 }

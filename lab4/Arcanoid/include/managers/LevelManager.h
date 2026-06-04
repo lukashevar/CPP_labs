@@ -25,10 +25,11 @@ public:
     std::vector<std::unique_ptr<Block>>& getBlocks();
     const std::vector<std::unique_ptr<Block>>& getBlocks() const;
 
+    size_t getLevelCount() const;
+
 private:
     void createBlocks(const LevelData& level);
 
-private:
     size_t currentLevel = 0;
 
     std::vector<LevelData> levels;

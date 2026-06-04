@@ -3,7 +3,7 @@
 #include <iostream>
 
 HUD::HUD()
-	: gameOverVisible(false) {
+	: gameOverVisible(false), winVisible(false) {
 
 	if (!font.loadFromFile("assets/arialmt.ttf")) {
 		throw std::runtime_error("Failed to load font");

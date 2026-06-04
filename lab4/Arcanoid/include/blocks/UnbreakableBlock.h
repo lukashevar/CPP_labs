@@ -10,4 +10,6 @@ public:
         const sf::Vector2f& size);
 
     void onHit(Ball& ball) override;
+
+    bool isBreakable() const override { return false; }
 };

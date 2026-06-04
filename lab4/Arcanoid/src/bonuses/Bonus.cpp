@@ -1,6 +1,7 @@
 #include "bonuses/Bonus.h"
 #include "entities/Paddle.h"
 #include "entities/Ball.h"
+#include "Config.h"
 
 Bonus::Bonus(const sf::Vector2f& position) {
 	shape.setRadius(10.f);
@@ -32,5 +33,5 @@ void Bonus::collect() {
 
 bool Bonus::isOutOfBounds() const
 {
-	return shape.getPosition().y > 600.f;
+	return shape.getPosition().y > Config::windowHeight;
 }

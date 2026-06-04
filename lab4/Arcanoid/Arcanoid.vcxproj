@@ -32,6 +32,7 @@
     <ClCompile Include="src\bonuses\Bonus.cpp" />
     <ClCompile Include="src\bonuses\BottomBarrierBonus.cpp" />
     <ClCompile Include="src\bonuses\ExpandPaddleBonus.cpp" />
+    <ClCompile Include="src\bonuses\RandomDirectionBonus.cpp" />
     <ClCompile Include="src\bonuses\StickyBonus.cpp" />
     <ClCompile Include="src\core\Game.cpp" />
     <ClCompile Include="src\entities\Ball.cpp" />
@@ -50,6 +51,7 @@
     <ClInclude Include="include\bonuses\BallSpeedBonus.h" />
     <ClInclude Include="include\bonuses\Bonus.h" />
     <ClInclude Include="include\bonuses\ExpandPaddleBonus.h" />
+    <ClInclude Include="include\bonuses\RandomDirectionBonus.h" />
     <ClInclude Include="include\bonuses\StickyBonus.h" />
     <ClInclude Include="include\core\Game.h" />
     <ClInclude Include="include\entities\Ball.h" />

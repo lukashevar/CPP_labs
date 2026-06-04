@@ -25,6 +25,7 @@ public:
 
 	void setBonus(bool value);
 
+	virtual bool isBreakable() const { return true; }
 protected:
 	sf::RectangleShape shape;
 	bool destroyed;

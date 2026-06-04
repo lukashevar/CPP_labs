@@ -21,6 +21,16 @@ Ball::Ball() {
 
 void Ball::update(float dt)
 {
+	if (randomDirectionActive) {
+		randomDirectionTimer -= dt;
+		if (randomDirectionTimer <= 0) {
+			randomDirectionActive = false;
+			float angle = (rand() % 120 - 60) * 3.1415926f / 180.f;
+			velocity.x = std::sin(angle);
+			velocity.y = (velocity.y > 0.f) ? std::cos(angle) : -std::abs(std::cos(angle));
+		}
+	}
+
 	if (speedBoostActive) {
 		speedBoostTimer -= dt;
 		if (speedBoostTimer <= 0.f) {
@@ -141,4 +151,9 @@ BallState Ball::getState() const {
 
 void Ball::setState(BallState s) {
 	state = s;
+}
+
+void Ball::enableRandomDirection() {
+	randomDirectionActive = true;
+	randomDirectionTimer = (rand() % 3 + 2) * 1.f;
 }

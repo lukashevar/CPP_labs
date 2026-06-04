@@ -28,6 +28,8 @@ public:
 	void snapToPaddle(float paddleCenterX, float paddleTopY);
 	void detach();
 
+	void enableRandomDirection();
+
 	sf::Vector2f getPosition() const;
 	sf::Vector2f getVelocity() const;
 	sf::FloatRect getBounds() const;
@@ -53,4 +55,7 @@ private:
 
 	bool stickyBonusActive = false;
 	float stickyBonusTimer = 0.f;
+
+	bool randomDirectionActive = false;
+	float randomDirectionTimer = 0.f;
 };
