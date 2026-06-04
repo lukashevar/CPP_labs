@@ -30,10 +30,12 @@
     <ClCompile Include="src\blocks\UnbreakableBlock.cpp" />
     <ClCompile Include="src\bonuses\BallSpeedBonus.cpp" />
     <ClCompile Include="src\bonuses\Bonus.cpp" />
+    <ClCompile Include="src\bonuses\BottomBarrierBonus.cpp" />
     <ClCompile Include="src\bonuses\ExpandPaddleBonus.cpp" />
     <ClCompile Include="src\bonuses\StickyBonus.cpp" />
     <ClCompile Include="src\core\Game.cpp" />
     <ClCompile Include="src\entities\Ball.cpp" />
+    <ClCompile Include="src\entities\BottomBarrier.cpp" />
     <ClCompile Include="src\entities\Paddle.cpp" />
     <ClCompile Include="src\managers\LevelManager.cpp" />
     <ClCompile Include="src\physics\CollisionSystem.cpp" />
@@ -51,11 +53,13 @@
     <ClInclude Include="include\bonuses\StickyBonus.h" />
     <ClInclude Include="include\core\Game.h" />
     <ClInclude Include="include\entities\Ball.h" />
+    <ClInclude Include="include\entities\BottomBarrier.h" />
     <ClInclude Include="include\entities\Paddle.h" />
     <ClInclude Include="include\managers\LevelManager.h" />
     <ClInclude Include="include\physics\CollisionSystem.h" />
     <ClInclude Include="include\ui\HUD.h" />
     <ClInclude Include="include\Config.h" />
+    <ClInclude Include="include\bonuses\BottomBarrierBonus.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

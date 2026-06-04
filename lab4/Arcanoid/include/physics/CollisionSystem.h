@@ -3,6 +3,7 @@
 #include "entities/Ball.h"
 #include "blocks/Block.h"
 #include "entities/Paddle.h"
+#include "entities/BottomBarrier.h"
 
 #include <vector>
 #include <memory>
@@ -24,4 +25,6 @@ public:
 		Ball& ball,
 		std::vector<std::unique_ptr<Block>>& blocks
 	);
+
+	static void checkBallBarrier(Ball& ball, BottomBarrier& barrier);
 };

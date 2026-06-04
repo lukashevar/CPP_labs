@@ -10,6 +10,7 @@
 #include "ui/HUD.h"
 #include "managers/LevelManager.h"
 #include "bonuses/Bonus.h"
+#include "entities/BottomBarrier.h"
 
 #include <memory>
 
@@ -42,6 +43,7 @@ private:
 	
 	LevelManager levelManager;
 	std::vector<std::unique_ptr<Bonus>> bonuses;
+	std::unique_ptr<BottomBarrier> barrier;
 
 	HUD hud;
 

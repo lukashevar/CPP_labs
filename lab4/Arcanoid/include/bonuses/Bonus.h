@@ -2,8 +2,13 @@
 
 #include <SFML/Graphics.hpp>
 
-class Paddle;
-class Ball;
+enum class BonusEffect {
+	None,
+	Sticky,
+	SpeedBoost,
+	ExpandPaddle,
+	BottomBarrier
+};
 
 class Bonus {
 public:
@@ -11,8 +16,7 @@ public:
 
 	virtual ~Bonus() = default;
 
-	virtual void apply(Paddle& paddle, Ball& ball) = 0;
-
+	virtual BonusEffect getEffect() const = 0;
 	void update(float dt);
 	void render(sf::RenderWindow& window);
 

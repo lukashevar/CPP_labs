@@ -158,3 +158,21 @@ std::vector<Block*> CollisionSystem::checkBallBlocks(
     }
     return destroyedBlocks;
 }
+
+void CollisionSystem::checkBallBarrier(Ball& ball, BottomBarrier& barrier) {
+    if (!barrier.isActive()) {
+        return;
+    }
+
+    sf::FloatRect ballBounds = ball.getBounds();
+    sf::FloatRect barrierBounds = barrier.getBounds();
+
+    if (!ballBounds.intersects(barrierBounds))
+        return;
+
+    sf::Vector2f vel = ball.getVelocity();
+    vel.y = -std::abs(vel.y);
+    ball.setVelocity(vel);
+
+    barrier.deactivate();
+}

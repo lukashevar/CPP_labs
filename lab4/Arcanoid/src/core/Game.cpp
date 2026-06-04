@@ -4,6 +4,7 @@
 #include "bonuses/ExpandPaddleBonus.h"
 #include "bonuses/BallSpeedBonus.h"
 #include "bonuses/StickyBonus.h"
+#include "bonuses/BottomBarrierBonus.h"
 
 #include <memory>
 #include <iostream>
@@ -112,8 +113,24 @@ void Game::update(float dt) {
 			continue;
 
 		if (bonus->getBounds().intersects(paddle.getBounds())) {
-			bonus->apply(paddle, ball);
 			bonus->collect();
+
+			switch (bonus->getEffect()) {
+			case BonusEffect::Sticky:
+				ball.enableSticky();
+				break;
+			case BonusEffect::SpeedBoost:
+				ball.applySpeedBoost(1.5f, 5.f);
+				break;
+			case BonusEffect::ExpandPaddle:
+				paddle.activateWidthBonus(10.f);
+				break;
+			case BonusEffect::BottomBarrier:
+				barrier = std::make_unique<BottomBarrier>();
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
@@ -129,10 +146,9 @@ void Game::update(float dt) {
 
 	CollisionSystem::checkBallWalls(ball, Config::windowWidth, Config::windowHeight);
 	CollisionSystem::checkBallPaddle(ball, paddle);
-	std::cout << "state: " << (int)ball.getState()
-		<< " sticky: " << ball.isSticky()
-		<< " vel: " << ball.getVelocity().x << " " << ball.getVelocity().y
-		<< std::endl;
+	if (barrier && barrier->isActive()) {
+		CollisionSystem::checkBallBarrier(ball, *barrier);
+	}
 	auto destroyed = CollisionSystem::checkBallBlocks(ball, levelManager.getBlocks());
 
 	for (auto* block : destroyed) {
@@ -183,6 +199,9 @@ void Game::render() {
 	paddle.render(window);
 	ball.render(window);
 
+	if (barrier && barrier->isActive())
+		barrier->render(window);
+
 	for (auto& block : levelManager.getBlocks()) {
 		block->render(window);
 	}
@@ -208,6 +227,7 @@ void Game::restartGame() {
 
 	ball.reset();
 	paddle.reset();
+	barrier.reset();
 
 	hud.showGameOver(false);
 	hud.showWin(false);
@@ -217,12 +237,15 @@ void Game::restartGame() {
 
 void Game::spawnBonus(sf::Vector2f pos)
 {
-	int r = rand() % 3;
+	int r = rand() % 4;
 	
 	if (r == 0)
 		bonuses.push_back(std::make_unique<ExpandPaddleBonus>(pos));
 	else if (r == 1)
 		bonuses.push_back(std::make_unique<BallSpeedBonus>(pos));
-	else
+	else if (r == 2)
 		bonuses.push_back(std::make_unique<StickyBonus>(pos));
+	else {
+		bonuses.push_back(std::make_unique<BottomBarrierBonus>(pos));
+	}
 }

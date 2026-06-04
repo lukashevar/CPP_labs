@@ -63,6 +63,12 @@
     <ClCompile Include="src\bonuses\StickyBonus.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="src\entities\BottomBarrier.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bonuses\BottomBarrierBonus.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\Game.h">
@@ -111,6 +117,12 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="include\bonuses\StickyBonus.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\entities\BottomBarrier.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="include\bonuses\BottomBarrierBonus.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

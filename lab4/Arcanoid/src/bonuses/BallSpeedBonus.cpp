@@ -9,9 +9,3 @@ BallSpeedBonus::BallSpeedBonus(
     shape.setFillColor(sf::Color::Red);
 }
 
-void BallSpeedBonus::apply(
-    Paddle&,
-    Ball& ball)
-{
-    ball.applySpeedBoost(1.5f, 5.f);
-}
