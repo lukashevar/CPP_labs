@@ -3,7 +3,7 @@
 void MatchFinder::clearMarks(Board& board) {
 	for (int r = 0; r < board.getRows(); ++r) {
 		for (int c = 0; c < board.getCols(); ++c) {
-			board.getCell(r, c).markedForDestroy = false;
+			board.getCell(r, c).dismarkForDestroy();
 		}
 	}
 }
@@ -33,10 +33,10 @@ bool MatchFinder::findHorizontalMatches(Board& board) {
 				continue;
 			}
 
-			GemColor color = startCell.color;
+			GemColor color = startCell.getColor();
 			int endCol = startCol;
 
-			while (endCol < board.getCols() && board.getCell(row, endCol).color == color) {
+			while (endCol < board.getCols() && board.getCell(row, endCol).getColor() == color) {
 				++endCol;
 			}
 
@@ -46,7 +46,7 @@ bool MatchFinder::findHorizontalMatches(Board& board) {
 				found = true;
 
 				for (int col = startCol; col < endCol; ++col) {
-					board.getCell(row, col).markedForDestroy = true;
+					board.getCell(row, col).markForDestroy();
 				}
 			}
 
@@ -71,10 +71,10 @@ bool MatchFinder::findVerticalMatches(Board& board) {
 				continue;
 			}
 
-			GemColor color = startCell.color;
+			GemColor color = startCell.getColor();
 			int endRow = startRow;
 
-			while (endRow < board.getRows() && board.getCell(endRow, col).color == color) {
+			while (endRow < board.getRows() && board.getCell(endRow, col).getColor() == color) {
 				++endRow;
 			}
 
@@ -84,7 +84,7 @@ bool MatchFinder::findVerticalMatches(Board& board) {
 				found = true;
 
 				for (int row = startRow; row < endRow; ++row) {
-					board.getCell(row, col).markedForDestroy = true;
+					board.getCell(row, col).markForDestroy();
 				}
 			}
 
