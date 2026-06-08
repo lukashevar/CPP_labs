@@ -13,9 +13,10 @@ class Cell {
 public:
 	Cell();
 
+	bool isEmpty() const;
+
+private:
 	GemColor color;
 	bool markedForDestroy = false;
 	BonusType bonus = BonusType::None;
-
-	bool isEmpty() const;
 };
