@@ -17,19 +17,19 @@ int BoardProcessor::destroyMarkedCells(
         {
             Cell& cell = board.getCell(row, col);
 
-            if (cell.markedForDestroy)
+            if (cell.isMarkedForDestroy())
             {
                 BonusSystem::trySpawnBonus(
                     board,
                     animations,
                     row,
                     col,
-                    cell.color
+                    cell.getColor()
                 );
 
-                cell.color = GemColor::Black;
+                cell.setColor(GemColor::Black);
 
-                cell.markedForDestroy = false;
+                cell.markForDestroy();
 
                 destroyed++;
             }
@@ -56,8 +56,8 @@ void BoardProcessor::collapseColumns(Board& board)
                 {
                     board.getCell(writeRow, col) = current;
 
-                    current.color = GemColor::Black;
-                    current.markedForDestroy = false;
+                    current.setColor(GemColor::Black);
+                    current.markForDestroy();
                 }
 
                 --writeRow;
@@ -68,8 +68,8 @@ void BoardProcessor::collapseColumns(Board& board)
         for (int row = writeRow; row >= 0; --row)
         {
             Cell& cell = board.getCell(row, col);
-            cell.color = GemColor::Black;
-            cell.markedForDestroy = false;
+            cell.setColor(GemColor::Black);
+            cell.markForDestroy();
         }
     }
 }
@@ -85,8 +85,8 @@ void BoardProcessor::fillEmptyCells(Board& board)
 
             if (cell.isEmpty())
             {
-                cell.color = board.generateRandomColor();
-                cell.markedForDestroy = false;
+                cell.setColor(board.generateRandomColor());
+                cell.dismarkForDestroy();
             }
         }
     }
@@ -123,7 +123,7 @@ std::vector<FallMove> BoardProcessor::collectFallMoves(Board& board) {
                         col,
                         writeRow,
                         col,
-                        cell.color
+                        cell.getColor()
                     });
                 }
 
