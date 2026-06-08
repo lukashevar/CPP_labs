@@ -51,7 +51,7 @@
     <ClCompile Include="MatchFinder.cpp">
       <Filter>Исходные файлы\Board</Filter>
     </ClCompile>
-    <ClCompile Include="BoardProccessor.cpp">
+    <ClCompile Include="BoardProcessor.cpp">
       <Filter>Исходные файлы\Board</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">

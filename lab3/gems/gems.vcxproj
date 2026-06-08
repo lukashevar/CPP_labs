@@ -136,7 +136,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationManager.cpp" />
     <ClCompile Include="Board.cpp" />
-    <ClCompile Include="BoardProccessor.cpp" />
+    <ClCompile Include="BoardProcessor.cpp" />
     <ClCompile Include="BoardRenderer.cpp" />
     <ClCompile Include="BonusSystem.cpp" />
     <ClCompile Include="Cell.cpp" />

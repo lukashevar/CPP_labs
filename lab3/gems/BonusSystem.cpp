@@ -90,7 +90,7 @@ void BonusSystem::applyRecolorBonus(
         int row = candidates[idx].first;
         int col = candidates[idx].second;
 
-        board.getCell(row, col).color = color;
+        board.getCell(row, col).setColor(color);
     }
 }
 
@@ -102,8 +102,7 @@ void BonusSystem::applyBombBonus(
 )
 {
    
-    board.getCell(centerRow, centerCol)
-        .markedForDestroy = true;
+    board.getCell(centerRow, centerCol).markForDestroy();
 
     for (int i = 0; i < 4; ++i)
     {
