@@ -1,31 +1,21 @@
 #pragma once
-#include "BonusType.h"
-
-enum class GemColor {
-	Red,
-	Green,
-	Blue,
-	Yellow,
-	Black
-};
+#include <memory>
+#include "Gem.h"
 
 class Cell {
 public:
 	Cell();
 
+	Gem* getGem() const;
+	void setGem(std::unique_ptr<Gem> gem);
+	std::unique_ptr<Gem> takeGem();
+
 	bool isEmpty() const;
 	bool isMarkedForDestroy() const;
-
-	GemColor getColor() const;
-	BonusType getBonus() const;
-
-	void setColor(GemColor new_color);
-
 	void markForDestroy();
 	void dismarkForDestroy();
 
 private:
-	GemColor color;
-	bool markedForDestroy = false;
-	BonusType bonus = BonusType::None;
+	bool m_markedForDestroy = false;
+	std::unique_ptr<Gem> m_gem;
 };

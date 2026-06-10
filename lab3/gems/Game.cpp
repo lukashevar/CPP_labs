@@ -82,49 +82,47 @@ void Game::handleMouseClick(int mouseX, int mouseY)
     int r1 = m_selectedCell->first;
     int c1 = m_selectedCell->second;
 
-    
     if (r1 == row && c1 == col)
     {
         m_selectedCell.reset();
         return;
     }
 
-    
     if (!m_board.areAdjacent(r1, c1, row, col))
     {
         m_selectedCell = { row, col };
         return;
     }
 
-    GemColor color1 = m_board.getCell(r1, c1).color;
-    GemColor color2 = m_board.getCell(row, col).color;
+    GemColor color1 = m_board.getCell(r1, c1).getGem()->getColor();
+    GemColor color2 = m_board.getCell(row, col).getGem()->getColor();
 
-    
     m_board.swapCells(r1, c1, row, col);
 
-    m_animationManager.add(
-        Animation(
-            AnimationType::Swap,
-            color1,
-            BoardRenderer::celltoPixel(r1, c1),
-            BoardRenderer::celltoPixel(row, col),
-            Constants::SWAP_ANIMATION_DURATION
-        )
+    Animation anim1(
+        AnimationType::Swap,
+        color1,
+        BoardRenderer::celltoPixel(r1, c1),
+        BoardRenderer::celltoPixel(row, col),
+        Constants::SWAP_ANIMATION_DURATION
     );
+    anim1.setRow(r1);
+    anim1.setCol(c1);
+    m_animationManager.add(anim1);
 
-    m_animationManager.add(
-        Animation(
-            AnimationType::Swap,
-            color2,
-            BoardRenderer::celltoPixel(row, col),
-            BoardRenderer::celltoPixel(r1, c1),
-            Constants::SWAP_ANIMATION_DURATION
-        )
+    Animation anim2(
+        AnimationType::Swap,
+        color2,
+        BoardRenderer::celltoPixel(row, col),
+        BoardRenderer::celltoPixel(r1, c1),
+        Constants::SWAP_ANIMATION_DURATION
     );
+    anim2.setRow(row);
+    anim2.setCol(col);
+    m_animationManager.add(anim2);
 
     m_state = GameState::Swapping;
 
-    
     m_moveRow1 = r1;
     m_moveCol1 = c1;
     m_moveRow2 = row;
@@ -250,17 +248,18 @@ void Game::startDestroyAnimations()
         {
             Cell& cell = m_board.getCell(row, col);
 
-            if (cell.markedForDestroy)
+            if (cell.isMarkedForDestroy())
             {
-                m_animationManager.add(
-                    Animation(
-                        AnimationType::Destroy,
-                        cell.color,
-                        BoardRenderer::celltoPixel(row, col),
-                        BoardRenderer::celltoPixel(row, col),
-                        Constants::DESTROY_ANIMATION_DURATION
-                    )
+                Animation anim(
+                    AnimationType::Destroy,
+                    cell.getGem()->getColor(),
+                    BoardRenderer::celltoPixel(row, col),
+                    BoardRenderer::celltoPixel(row, col),
+                    Constants::DESTROY_ANIMATION_DURATION
                 );
+                anim.setRow(row);
+                anim.setCol(col);
+                m_animationManager.add(anim);
             }
         }
     }

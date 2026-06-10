@@ -12,20 +12,4 @@ public:
 		int col,
 		GemColor sourceColor
 	);
-
-private:
-	static void applyRecolorBonus(
-		Board& board,
-		AnimationManager& animations,
-		int centerRow,
-		int centerCol,
-		GemColor color
-	);
-
-	static void applyBombBonus(
-		Board& board,
-		AnimationManager& animations,
-		int centerRow,
-		int centerCol
-	);
 };

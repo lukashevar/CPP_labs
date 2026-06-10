@@ -8,7 +8,7 @@
 class AnimationManager {
 public:
 	void add(const Animation& animation);
-
+	
 	void update(float dt);
 
 	void clear();

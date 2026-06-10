@@ -1,6 +1,8 @@
 #include "BoardProcessor.h"
 #include "MatchFinder.h"
 #include "BonusSystem.h"
+#include "GemFactory.h"
+#include "Gem.h"
 
 
 
@@ -17,20 +19,22 @@ int BoardProcessor::destroyMarkedCells(
         {
             Cell& cell = board.getCell(row, col);
 
-            if (cell.isMarkedForDestroy())
+            if (cell.isMarkedForDestroy() && !cell.isEmpty())
             {
-                BonusSystem::trySpawnBonus(
-                    board,
-                    animations,
-                    row,
-                    col,
-                    cell.getColor()
-                );
+                Gem* gem = cell.getGem();
 
-                cell.setColor(GemColor::Black);
+                if (gem->isBonus())
+                {
+                    gem->activate(board, animations, row, col);
+                }
+                else
+                {
+                    BonusSystem::trySpawnBonus(
+                        board, animations, row, col, gem->getColor()
+                    );
+                }
 
-                cell.markForDestroy();
-
+                cell.setGem(nullptr);
                 destroyed++;
             }
         }
@@ -54,22 +58,13 @@ void BoardProcessor::collapseColumns(Board& board)
             {
                 if (row != writeRow)
                 {
-                    board.getCell(writeRow, col) = current;
-
-                    current.setColor(GemColor::Black);
-                    current.markForDestroy();
+                    board.getCell(writeRow, col).setGem(
+                        std::move(current.takeGem())
+                    );
                 }
 
                 --writeRow;
             }
-        }
-
-        
-        for (int row = writeRow; row >= 0; --row)
-        {
-            Cell& cell = board.getCell(row, col);
-            cell.setColor(GemColor::Black);
-            cell.markForDestroy();
         }
     }
 }
@@ -85,8 +80,9 @@ void BoardProcessor::fillEmptyCells(Board& board)
 
             if (cell.isEmpty())
             {
-                cell.setColor(board.generateRandomColor());
-                cell.dismarkForDestroy();
+                cell.setGem(GemFactory::createRandom(
+                    board.generateRandomColor()
+                ));
             }
         }
     }
@@ -123,7 +119,7 @@ std::vector<FallMove> BoardProcessor::collectFallMoves(Board& board) {
                         col,
                         writeRow,
                         col,
-                        cell.getColor()
+                        cell.getGem()->getColor()
                     });
                 }
 

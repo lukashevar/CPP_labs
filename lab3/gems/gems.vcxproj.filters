@@ -34,6 +34,12 @@
     <Filter Include="Исходные файлы\Score">
       <UniqueIdentifier>{383fbc2e-1396-4c45-bd6a-23b5fa68b4ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\Gem">
+      <UniqueIdentifier>{85a62d98-432f-42c5-bfc0-816ae9adddeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Factory">
+      <UniqueIdentifier>{ac1781c1-dc0e-43c1-a128-56ef11fe2c3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,6 +74,15 @@
     </ClCompile>
     <ClCompile Include="ScoreManager.cpp">
       <Filter>Исходные файлы\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="RecolorBonusGem.cpp">
+      <Filter>Исходные файлы\Gem</Filter>
+    </ClCompile>
+    <ClCompile Include="BombBonusGem.cpp">
+      <Filter>Исходные файлы\Gem</Filter>
+    </ClCompile>
+    <ClCompile Include="GemFactory.cpp">
+      <Filter>Исходные файлы\Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +124,24 @@
     </ClInclude>
     <ClInclude Include="ScoreManager.h">
       <Filter>Исходные файлы\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="Gem.h">
+      <Filter>Исходные файлы\Gem</Filter>
+    </ClInclude>
+    <ClInclude Include="StandartGem.h">
+      <Filter>Исходные файлы\Gem</Filter>
+    </ClInclude>
+    <ClInclude Include="RecolorBonusGem.h">
+      <Filter>Исходные файлы\Gem</Filter>
+    </ClInclude>
+    <ClInclude Include="BombBonusGem.h">
+      <Filter>Исходные файлы\Gem</Filter>
+    </ClInclude>
+    <ClInclude Include="GemFactory.h">
+      <Filter>Исходные файлы\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="GemColor.h">
+      <Filter>Исходные файлы\Gem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

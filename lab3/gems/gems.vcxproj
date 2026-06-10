@@ -138,11 +138,14 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardProcessor.cpp" />
     <ClCompile Include="BoardRenderer.cpp" />
+    <ClCompile Include="BombBonusGem.cpp" />
     <ClCompile Include="BonusSystem.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GemFactory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MatchFinder.cpp" />
+    <ClCompile Include="RecolorBonusGem.cpp" />
     <ClCompile Include="ScoreManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -151,14 +154,20 @@
     <ClInclude Include="Board.h" />
     <ClInclude Include="BoardProcessor.h" />
     <ClInclude Include="BoardRenderer.h" />
+    <ClInclude Include="BombBonusGem.h" />
     <ClInclude Include="BonusSystem.h" />
     <ClInclude Include="BonusType.h" />
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="FallMove.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Gem.h" />
+    <ClInclude Include="GemColor.h" />
+    <ClInclude Include="GemFactory.h" />
     <ClInclude Include="MatchFinder.h" />
+    <ClInclude Include="RecolorBonusGem.h" />
     <ClInclude Include="ScoreManager.h" />
+    <ClInclude Include="StandartGem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

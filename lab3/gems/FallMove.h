@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "Cell.h"
+#include "GemColor.h"
 
 struct FallMove {
 	int fromRow;

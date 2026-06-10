@@ -1,35 +1,32 @@
 #include "Cell.h"
+#include "GemFactory.h"
 
-Cell::Cell()
-	: color(GemColor::Black),
-	markedForDestroy(false)
-{
+Cell::Cell() : m_markedForDestroy(false) {}
+
+Gem* Cell::getGem() const {
+	return m_gem.get();
+}
+
+void Cell::setGem(std::unique_ptr<Gem> gem) {
+	m_gem = std::move(gem);
 }
 
 bool Cell::isEmpty() const {
-	return color == GemColor::Black;
+	return m_gem == nullptr;
 }
 
 bool Cell::isMarkedForDestroy() const {
-	return markedForDestroy;
-}
-
-GemColor Cell::getColor() const {
-	return color;
-}
-
-BonusType Cell::getBonus() const {
-	return bonus;
-}
-
-void Cell::setColor(GemColor new_color) {
-	color = new_color;
+	return m_markedForDestroy;
 }
 
 void Cell::markForDestroy() {
-	markedForDestroy = true;
+	m_markedForDestroy = true;
 }
 
 void Cell::dismarkForDestroy() {
-	markedForDestroy = false;
+	m_markedForDestroy = false;
+}
+
+std::unique_ptr<Gem> Cell::takeGem() {
+	return std::move(m_gem);
 }

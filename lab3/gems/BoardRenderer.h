@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Board.h"
 #include "AnimationManager.h"
+#include "GemColor.h"
 
 class BoardRenderer {
 public:
