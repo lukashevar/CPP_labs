@@ -41,6 +41,9 @@
     <ClCompile Include="src\managers\LevelManager.cpp" />
     <ClCompile Include="src\managers\StateManager.cpp" />
     <ClCompile Include="src\physics\CollisionSystem.cpp" />
+    <ClCompile Include="src\states\LevelSelectState.cpp" />
+    <ClCompile Include="src\states\MainMenuState.cpp" />
+    <ClCompile Include="src\states\PlayingState.cpp" />
     <ClCompile Include="src\ui\HUD.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -61,7 +64,9 @@
     <ClInclude Include="include\managers\LevelManager.h" />
     <ClInclude Include="include\managers\StateManager.h" />
     <ClInclude Include="include\physics\CollisionSystem.h" />
+    <ClInclude Include="include\states\LevelSelectState.h" />
     <ClInclude Include="include\states\MainMenuState.h" />
+    <ClInclude Include="include\states\PlayingState.h" />
     <ClInclude Include="include\states\State.h" />
     <ClInclude Include="include\ui\HUD.h" />
     <ClInclude Include="include\Config.h" />

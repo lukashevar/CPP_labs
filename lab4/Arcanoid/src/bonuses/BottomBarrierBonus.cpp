@@ -5,5 +5,3 @@ BottomBarrierBonus::BottomBarrierBonus(const sf::Vector2f& position)
 {
 	shape.setFillColor(sf::Color::Cyan);
 }
-
-

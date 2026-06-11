@@ -15,7 +15,7 @@ LevelManager::LevelManager()
     {
         LevelData{
             {
-                "1111441111",
+                "3333333333",
                 "1111111111",
                 "1111441111",
                 "1111111111"
@@ -122,7 +122,7 @@ void LevelManager::createBlocks(const LevelData& level)
                     blockSize
                 );
 
-                if (rand() % 1 == 0)
+                if (rand() % 5 == 0)
                     block->setBonus(true);
 
                 blocks.push_back(std::move(block));

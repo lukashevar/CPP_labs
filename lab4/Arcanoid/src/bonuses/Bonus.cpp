@@ -1,6 +1,4 @@
 #include "bonuses/Bonus.h"
-#include "entities/Paddle.h"
-#include "entities/Ball.h"
 #include "Config.h"
 
 Bonus::Bonus(const sf::Vector2f& position) {

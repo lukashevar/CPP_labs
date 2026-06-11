@@ -129,20 +129,10 @@ bool Ball::isSticky() const
 	return stickyBonusActive;
 }
 
-bool Ball::isAttached() const
-{
-	return state == BallState::OnPaddle;
-}
-
 void Ball::snapToPaddle(float paddleCenterX, float paddleTopY) 
 {
 	shape.setPosition(paddleCenterX, paddleTopY - getRadius());
 	velocity = { 0.f, 0.f };
-}
-
-void Ball::detach()
-{
-	state = BallState::Launched;
 }
 
 BallState Ball::getState() const {

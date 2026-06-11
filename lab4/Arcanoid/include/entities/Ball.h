@@ -24,9 +24,7 @@ public:
 	void enableSticky();
 	bool isSticky() const;
 	
-	bool isAttached() const;
 	void snapToPaddle(float paddleCenterX, float paddleTopY);
-	void detach();
 
 	void enableRandomDirection();
 
