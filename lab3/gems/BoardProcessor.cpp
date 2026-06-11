@@ -22,7 +22,7 @@ int BoardProcessor::destroyMarkedCells(
             if (cell.isMarkedForDestroy() && !cell.isEmpty())
             {
                 Gem* gem = cell.getGem();
-
+                
                 if (gem->isBonus())
                 {
                     gem->activate(board, animations, row, col);
@@ -77,12 +77,14 @@ void BoardProcessor::fillEmptyCells(Board& board)
         for (int col = 0; col < board.getCols(); ++col)
         {
             Cell& cell = board.getCell(row, col);
-
             if (cell.isEmpty())
             {
-                cell.setGem(GemFactory::createRandom(
-                    board.generateRandomColor()
-                ));
+                GemColor color = board.generateRandomColor();
+
+                
+
+                cell.setGem(GemFactory::createRandom(color));
+                cell.dismarkForDestroy();
             }
         }
     }

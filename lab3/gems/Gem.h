@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GemColor.h"
+#include <cassert>
 
 class Board;
 class AnimationManager;

@@ -18,20 +18,21 @@ void BombBonusGem::activate(
 
         Cell& cell = board.getCell(randomRow, randomCol);
 
-        if (!cell.isEmpty())
-        {
-            cell.setGem(nullptr);
+        if (cell.isEmpty())
+            continue;
 
-            Animation anim(
-                AnimationType::BombBonus,
-                m_color,
-                BoardRenderer::celltoPixel(randomRow, randomCol),
-                BoardRenderer::celltoPixel(randomRow, randomCol),
-                0.5f
-            );
-            anim.setRow(randomRow);
-            anim.setCol(randomCol);
-            animations.add(anim);
-        }
+        GemColor color = cell.getGem()->getColor();
+        cell.setGem(nullptr);
+
+        Animation anim(
+            AnimationType::BombBonus,
+            color,
+            BoardRenderer::celltoPixel(randomRow, randomCol),
+            BoardRenderer::celltoPixel(randomRow, randomCol),
+            0.5f
+        );
+        anim.setRow(randomRow);
+        anim.setCol(randomCol);
+        animations.add(anim);
     }
 }

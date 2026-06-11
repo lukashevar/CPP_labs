@@ -14,8 +14,9 @@ Board::Board(int rows, int cols)
 
 GemColor Board::getRandomColor() const {
     static std::mt19937 engine(std::random_device{}());
-    std::uniform_int_distribution<int> dist(0, 3);
-    return static_cast<GemColor>(dist(engine));
+    std::uniform_int_distribution<int> dist(0, 3); 
+    GemColor color = static_cast<GemColor>(dist(engine));
+    return color;
 }
 
 void Board::initialize() {

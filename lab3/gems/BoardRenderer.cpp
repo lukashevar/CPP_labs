@@ -33,7 +33,6 @@ void BoardRenderer::draw(
         for (int col = 0; col < board.getCols(); ++col) {
             const Cell& cell = board.getCell(row, col);
 
-            // Пустые и помеченные на уничтожение не рисуем
             if (cell.isEmpty() || cell.isMarkedForDestroy())
                 continue;
 

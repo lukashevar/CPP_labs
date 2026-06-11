@@ -1,8 +1,6 @@
 #include "Cell.h"
 #include "GemFactory.h"
 
-Cell::Cell() : m_markedForDestroy(false) {}
-
 Gem* Cell::getGem() const {
 	return m_gem.get();
 }

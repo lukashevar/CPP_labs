@@ -1,0 +1,340 @@
+about to activate, gem=00000249C0FD1550, color=3
+about to activate, gem=00000249C0FD17D0, color=3
+about to activate, gem=00000249C0FD1870, color=3
+about to activate, gem=00000249C0FD18C0, color=3
+trySpawnBonus color 3 at neighbor of [2][3]
+about to activate, gem=00000249C0DF91E0, color=1
+about to activate, gem=00000249B9699650, color=3
+about to activate, gem=00000249BBBE60F0, color=1
+about to activate, gem=00000249C0F5B2C0, color=3
+about to activate, gem=00000249C0F5A410, color=1
+about to activate, gem=00000249C0F5AC80, color=1
+trySpawnBonus color 1 at neighbor of [4][6]
+about to activate, gem=00000249C0F5A7D0, color=1
+about to activate, gem=00000249C0F5B540, color=0
+about to activate, gem=00000249C0F5A6E0, color=0
+about to activate, gem=00000249C0F5AE60, color=0
+about to activate, gem=00000249C0F5A730, color=0
+about to activate, gem=00000249C0F5A320, color=0
+about to activate, gem=00000249C0F5ABE0, color=0
+about to activate, gem=00000249C0F5A370, color=1
+about to activate, gem=00000249C0F5A780, color=1
+about to activate, gem=00000249C0F5A8C0, color=1
+trySpawnBonus color 1 at neighbor of [7][5]
+RecolorBonusGem created with color 1
+about to activate, gem=00000249C0F5AF50, color=2
+about to activate, gem=00000249C0FD1190, color=2
+about to activate, gem=00000249C0F5ABE0, color=3
+about to activate, gem=00000249C0F5AE10, color=3
+about to activate, gem=00000249C0F5B5E0, color=3
+trySpawnBonus color 3 at neighbor of [1][5]
+RecolorBonusGem created with color 3
+about to activate, gem=00000249C0FD0BF0, color=2
+about to activate, gem=00000249C0DFA180, color=2
+about to activate, gem=00000249C0F5A5A0, color=3
+about to activate, gem=00000249C0F5A4B0, color=3
+about to activate, gem=00000249C0DEF0D0, color=3
+trySpawnBonus color 3 at neighbor of [5][4]
+about to activate, gem=00000249C0F5A820, color=2
+about to activate, gem=00000249C0F5B4A0, color=2
+about to activate, gem=00000249C0F5A3C0, color=2
+about to activate, gem=00000249C0F5AF50, color=3
+about to activate, gem=00000249C0F5A820, color=0
+about to activate, gem=00000249C0F5B220, color=3
+trySpawnBonus color 3 at neighbor of [1][2]
+about to activate, gem=00000249C0F5B630, color=0
+about to activate, gem=00000249C0F5A8C0, color=3
+about to activate, gem=00000249C0F5AB40, color=0
+about to activate, gem=00000249C0FD0BA0, color=1
+about to activate, gem=00000249BB938CD0, color=1
+about to activate, gem=00000249C0FD0F10, color=1
+about to activate, gem=00000249C0F5A730, color=1
+about to activate, gem=00000249C0F5ABE0, color=3
+about to activate, gem=00000249C0F5B400, color=3
+about to activate, gem=00000249C0F5AE60, color=3
+about to activate, gem=00000249C0F5A7D0, color=3
+about to activate, gem=00000249C0F5A3C0, color=3
+about to activate, gem=00000249C0F5AF50, color=3
+about to activate, gem=00000249C0F5A500, color=3
+about to activate, gem=00000249C0F5B2C0, color=3
+about to activate, gem=00000249C0FD0AB0, color=3
+trySpawnBonus color 3 at neighbor of [5][3]
+RecolorBonusGem created with color 3
+about to activate, gem=00000249C0F5ABE0, color=1
+about to activate, gem=00000249C0F5A7D0, color=1
+about to activate, gem=00000249C0F5AFF0, color=1
+about to activate, gem=00000249C0F5B220, color=0
+trySpawnBonus color 0 at neighbor of [4][3]
+about to activate, gem=00000249C0FD0D30, color=0
+about to activate, gem=00000249C0F5B3B0, color=0
+about to activate, gem=00000249C0F5AFF0, color=3
+about to activate, gem=00000249C0F5ABE0, color=3
+about to activate, gem=00000249C0F5ADC0, color=3
+about to activate, gem=00000249C0F5A500, color=0
+about to activate, gem=00000249C0F5B540, color=0
+about to activate, gem=00000249C0F5A7D0, color=0
+about to activate, gem=00000249C0FD14B0, color=3
+about to activate, gem=00000249C0F5AEB0, color=3
+about to activate, gem=00000249C0F5AC30, color=3
+about to activate, gem=00000249C0F5AC80, color=2
+trySpawnBonus color 2 at neighbor of [6][0]
+RecolorBonusGem created with color 2
+about to activate, gem=00000249C0F5A2D0, color=2
+about to activate, gem=00000249C0F5AAA0, color=2
+about to activate, gem=00000249C0F5A550, color=1
+about to activate, gem=00000249C0F5B630, color=1
+trySpawnBonus color 1 at neighbor of [5][2]
+about to activate, gem=00000249C0F5A410, color=1
+about to activate, gem=00000249C0F5A730, color=0
+trySpawnBonus color 0 at neighbor of [4][1]
+RecolorBonusGem created with color 0
+about to activate, gem=00000249C0F5AE10, color=0
+about to activate, gem=00000249C0F5ACD0, color=0
+trySpawnBonus color 0 at neighbor of [6][1]
+about to activate, gem=00000249C0F5A8C0, color=0
+about to activate, gem=00000249C0F5A550, color=0
+about to activate, gem=00000249C0F5A730, color=0
+about to activate, gem=00000249C0F5A730, color=3
+about to activate, gem=00000249C0F5AB40, color=3
+about to activate, gem=00000249C0F5A410, color=3
+about to activate, gem=00000249C0F5A410, color=0
+about to activate, gem=00000249C0F5ABE0, color=0
+about to activate, gem=00000249C0F5B630, color=0
+about to activate, gem=00000249C0F5B630, color=0
+about to activate, gem=00000249C0F5A410, color=0
+about to activate, gem=00000249C0F5ABE0, color=0
+about to activate, gem=00000249C0F5A410, color=1
+about to activate, gem=00000249C0F5A2D0, color=1
+about to activate, gem=00000249C0F5ABE0, color=1
+about to activate, gem=00000249C0F5B540, color=1
+about to activate, gem=00000249C0F5ACD0, color=1
+about to activate, gem=00000249C0F5B630, color=2
+about to activate, gem=00000249C0F5AAA0, color=2
+about to activate, gem=00000249C0F5AD70, color=2
+trySpawnBonus color 2 at neighbor of [3][3]
+about to activate, gem=00000249C0F5A2D0, color=2
+trySpawnBonus color 2 at neighbor of [2][1]
+about to activate, gem=00000249C0F5A730, color=2
+about to activate, gem=00000249C0F5B630, color=2
+about to activate, gem=00000249C0F5AEB0, color=3
+about to activate, gem=00000249C0F5A500, color=3
+about to activate, gem=00000249C0F5AFF0, color=3
+about to activate, gem=00000249C0F5AAA0, color=3
+trySpawnBonus color 3 at neighbor of [2][2]
+RecolorBonusGem created with color 3
+about to activate, gem=00000249C0F5AB40, color=3
+trySpawnBonus color 3 at neighbor of [2][3]
+RecolorBonusGem created with color 3
+about to activate, gem=00000249C0F5B680, color=3
+trySpawnBonus color 3 at neighbor of [2][4]
+about to activate, gem=00000249C0F5A500, color=2
+about to activate, gem=00000249C0F5AB40, color=2
+about to activate, gem=00000249C0F5AD70, color=2
+trySpawnBonus color 2 at neighbor of [0][3]
+about to activate, gem=00000249C0F5ABE0, color=1
+about to activate, gem=00000249C0F5B630, color=1
+about to activate, gem=00000249C0F5AEB0, color=1
+about to activate, gem=00000249C0F5B9F0, color=3
+about to activate, gem=00000249C0F5A730, color=3
+about to activate, gem=00000249C0F5AAA0, color=3
+about to activate, gem=00000249C0F5AC30, color=0
+about to activate, gem=00000249C0F5B450, color=0
+about to activate, gem=00000249C0F5AD20, color=0
+about to activate, gem=00000249C0F5B3B0, color=2
+about to activate, gem=00000249C0F5AFA0, color=2
+about to activate, gem=00000249C0F5A640, color=2
+about to activate, gem=00000249C0F5B6D0, color=2
+about to activate, gem=00000249C0F5AB40, color=2
+about to activate, gem=00000249C0F5B130, color=2
+about to activate, gem=00000249C0F5AE10, color=3
+about to activate, gem=00000249C0F5AF50, color=3
+trySpawnBonus color 3 at neighbor of [1][1]
+about to activate, gem=00000249C0F5A410, color=3
+trySpawnBonus color 3 at neighbor of [1][2]
+about to activate, gem=00000249C0F5ADC0, color=2
+trySpawnBonus color 2 at neighbor of [4][0]
+RecolorBonusGem created with color 2
+about to activate, gem=00000249C0F5BEA0, color=2
+about to activate, gem=00000249C0F5B400, color=2
+about to activate, gem=00000249C0F5A870, color=3
+trySpawnBonus color 3 at neighbor of [4][3]
+RecolorBonusGem created with color 3
+about to activate, gem=00000249C0F5BEF0, color=3
+trySpawnBonus color 3 at neighbor of [4][4]
+RecolorBonusGem created with color 3
+about to activate, gem=00000249C0F5B1D0, color=3
+about to activate, gem=00000249C0F5C760, color=3
+trySpawnBonus color 3 at neighbor of [0][1]
+about to activate, gem=00000249C0F5D7F0, color=3
+about to activate, gem=00000249C0F5AE10, color=3
+about to activate, gem=00000249C0F5B7C0, color=2
+about to activate, gem=00000249C0F5B2C0, color=2
+about to activate, gem=00000249C0F5B4F0, color=2
+about to activate, gem=00000249C0F5ADC0, color=2
+about to activate, gem=00000249C0F5B270, color=2
+about to activate, gem=00000249C0F5B400, color=2
+about to activate, gem=00000249C0F5ACD0, color=2
+trySpawnBonus color 2 at neighbor of [3][1]
+about to activate, gem=00000249C0F5AF50, color=2
+about to activate, gem=00000249C0F5AEB0, color=2
+about to activate, gem=00000249C0F5A870, color=2
+about to activate, gem=00000249C0F5B400, color=3
+about to activate, gem=00000249C0F5A780, color=3
+about to activate, gem=00000249C0F5A870, color=3
+about to activate, gem=00000249C0F5ACD0, color=3
+about to activate, gem=00000249C0F5A730, color=3
+about to activate, gem=00000249C0F5ACD0, color=2
+about to activate, gem=00000249C0F5A780, color=2
+about to activate, gem=00000249C0F5A2D0, color=0
+about to activate, gem=00000249C0F5B3B0, color=0
+about to activate, gem=00000249C0F5AE10, color=0
+about to activate, gem=00000249C0F5A870, color=2
+about to activate, gem=00000249C0F5B270, color=2
+about to activate, gem=00000249C0F5B040, color=2
+about to activate, gem=00000249C0F5AFA0, color=2
+about to activate, gem=00000249C0F5AD70, color=3
+about to activate, gem=00000249C0F5B1D0, color=3
+about to activate, gem=00000249C0F5A820, color=3
+about to activate, gem=00000249C0F5A3C0, color=3
+about to activate, gem=00000249C0F5B3B0, color=1
+about to activate, gem=00000249C0F5A2D0, color=1
+about to activate, gem=00000249C0F5A3C0, color=1
+about to activate, gem=00000249C0F5ADC0, color=0
+trySpawnBonus color 0 at neighbor of [1][0]
+RecolorBonusGem created with color 0
+about to activate, gem=00000249C0F5A870, color=0
+about to activate, gem=00000249C0F5B1D0, color=0
+trySpawnBonus color 0 at neighbor of [1][2]
+about to activate, gem=00000249C0F5AD70, color=2
+about to activate, gem=00000249C0F5A730, color=2
+about to activate, gem=00000249C0F5B040, color=2
+trySpawnBonus color 2 at neighbor of [2][3]
+about to activate, gem=00000249C0F5BA90, color=1
+about to activate, gem=00000249C0F5B680, color=1
+about to activate, gem=00000249C0F5B310, color=1
+trySpawnBonus color 1 at neighbor of [4][5]
+about to activate, gem=00000249C0F5AF50, color=0
+about to activate, gem=00000249C0F5D840, color=0
+about to activate, gem=00000249C0F5A690, color=0
+about to activate, gem=00000249C0F5AE60, color=0
+about to activate, gem=00000249C0F5A550, color=0
+trySpawnBonus color 0 at neighbor of [7][1]
+about to activate, gem=00000249C0F5B220, color=0
+about to activate, gem=00000249C0F5A8C0, color=0
+about to activate, gem=00000249C0F5A730, color=1
+about to activate, gem=00000249C0F5AFA0, color=1
+about to activate, gem=00000249C0F5B220, color=1
+about to activate, gem=00000249C0F5B3B0, color=0
+about to activate, gem=00000249C0F5A370, color=0
+about to activate, gem=00000249C0F5AD70, color=0
+about to activate, gem=00000249C0F5ADC0, color=3
+about to activate, gem=00000249C0F5A4B0, color=3
+about to activate, gem=00000249C0F5A780, color=3
+about to activate, gem=00000249C0F5AEB0, color=0
+about to activate, gem=00000249C0F5B310, color=0
+about to activate, gem=00000249C0F5A730, color=0
+about to activate, gem=00000249C0F5AC30, color=0
+trySpawnBonus color 0 at neighbor of [3][2]
+about to activate, gem=00000249C0F5C760, color=0
+about to activate, gem=00000249C0F5B4F0, color=0
+trySpawnBonus color 0 at neighbor of [3][4]
+about to activate, gem=00000249C0F5B450, color=0
+about to activate, gem=00000249C0F5AC30, color=0
+about to activate, gem=00000249C0F5ACD0, color=0
+about to activate, gem=00000249C0F5B090, color=0
+about to activate, gem=00000249C0F5B1D0, color=0
+about to activate, gem=00000249C0F5A4B0, color=2
+about to activate, gem=00000249C0F5B540, color=2
+about to activate, gem=00000249C0F5B5E0, color=2
+about to activate, gem=00000249C0F5B310, color=0
+about to activate, gem=00000249C0F5A730, color=0
+about to activate, gem=00000249C0F5BEA0, color=0
+about to activate, gem=00000249C0F5ACD0, color=3
+about to activate, gem=00000249C0F5ADC0, color=3
+about to activate, gem=00000249C0F5B1D0, color=3
+trySpawnBonus color 3 at neighbor of [0][5]
+about to activate, gem=00000249C0F5B4F0, color=3
+trySpawnBonus color 3 at neighbor of [0][6]
+about to activate, gem=00000249C0F5A550, color=3
+about to activate, gem=00000249C0F5B270, color=3
+about to activate, gem=00000249C0F5AE10, color=3
+trySpawnBonus color 3 at neighbor of [7][1]
+about to activate, gem=00000249C0F5AE10, color=2
+about to activate, gem=00000249C0F5A730, color=2
+about to activate, gem=00000249C0F5B540, color=2
+about to activate, gem=00000249C0F5ACD0, color=3
+about to activate, gem=00000249C0F5ADC0, color=3
+about to activate, gem=00000249C0F5AB40, color=3
+about to activate, gem=00000249C0F5AC30, color=3
+about to activate, gem=00000249C0F5A870, color=3
+about to activate, gem=00000249C0F5B2C0, color=2
+about to activate, gem=00000249C0F5A780, color=2
+about to activate, gem=00000249C0F5A7D0, color=2
+about to activate, gem=00000249C0F5A550, color=1
+about to activate, gem=00000249C0F5B5E0, color=1
+about to activate, gem=00000249C0F5A7D0, color=1
+about to activate, gem=00000249C0F5B220, color=0
+about to activate, gem=00000249C0F5A8C0, color=0
+trySpawnBonus color 0 at neighbor of [5][0]
+about to activate, gem=00000249C0F5B4A0, color=0
+about to activate, gem=00000249C0F5B090, color=0
+about to activate, gem=00000249C0F5B220, color=0
+about to activate, gem=00000249C0F5B4F0, color=0
+about to activate, gem=00000249C0F5ABE0, color=0
+trySpawnBonus color 0 at neighbor of [1][1]
+about to activate, gem=00000249C0F5B540, color=2
+about to activate, gem=00000249C0F5B2C0, color=2
+trySpawnBonus color 2 at neighbor of [1][6]
+RecolorBonusGem created with color 2
+about to activate, gem=00000249C0F5ACD0, color=2
+about to activate, gem=00000249C0F5AC30, color=0
+about to activate, gem=00000249C0F5B5E0, color=0
+about to activate, gem=00000249C0F5A730, color=0
+about to activate, gem=00000249C0F5A4B0, color=0
+about to activate, gem=00000249C0F5B4F0, color=2
+about to activate, gem=00000249C0F5A7D0, color=2
+about to activate, gem=00000249C0F5A690, color=2
+about to activate, gem=00000249C0F5AE60, color=2
+about to activate, gem=00000249C0F5B2C0, color=1
+trySpawnBonus color 1 at neighbor of [0][1]
+about to activate, gem=00000249C0F5B540, color=1
+about to activate, gem=00000249C0F5AE60, color=1
+about to activate, gem=00000249C0F5B4A0, color=3
+about to activate, gem=00000249C0F5AA00, color=3
+about to activate, gem=00000249C0F5AE10, color=3
+about to activate, gem=00000249C0F5A8C0, color=0
+about to activate, gem=00000249C0F5AEB0, color=0
+trySpawnBonus color 0 at neighbor of [1][4]
+RecolorBonusGem created with color 0
+about to activate, gem=00000249C0F5B040, color=0
+trySpawnBonus color 0 at neighbor of [2][4]
+about to activate, gem=00000249C0F5B3B0, color=3
+trySpawnBonus color 3 at neighbor of [2][5]
+about to activate, gem=00000249C0F5AF50, color=3
+about to activate, gem=00000249C0F5A410, color=3
+about to activate, gem=00000249C0F5C760, color=0
+about to activate, gem=00000249C0F5BEA0, color=3
+trySpawnBonus color 3 at neighbor of [1][4]
+about to activate, gem=00000249C0F5CB70, color=3
+about to activate, gem=00000249C0F5A4B0, color=3
+about to activate, gem=00000249C0F5B4A0, color=0
+about to activate, gem=00000249C0F5A870, color=0
+about to activate, gem=00000249C0F5AEB0, color=0
+about to activate, gem=00000249C0F5D660, color=2
+about to activate, gem=00000249C0F5A730, color=2
+about to activate, gem=00000249C0F5AB40, color=2
+about to activate, gem=00000249C0F5B450, color=2
+trySpawnBonus color 2 at neighbor of [2][7]
+RecolorBonusGem created with color 2
+about to activate, gem=00000249C0F5A370, color=1
+about to activate, gem=00000249C0F5DB10, color=3
+about to activate, gem=00000249C0F5BEF0, color=3
+about to activate, gem=00000249C0F5AD20, color=3
+about to activate, gem=00000249C0F5A780, color=1
+about to activate, gem=00000249C0F5A370, color=2
+about to activate, gem=00000249C0F5B5E0, color=2
+about to activate, gem=00000249C0F5AF50, color=2
+about to activate, gem=00000249C0F5AC30, color=3
+trySpawnBonus color 3 at neighbor of [2][0]
+about to activate, gem=00000249C0F5B9F0, color=3
+about to activate, gem=00000249C0F5ABE0, color=3

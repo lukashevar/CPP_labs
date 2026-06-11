@@ -5,6 +5,7 @@
 #include "Constants.h"
 #include "MatchFinder.h"
 
+
 Game::Game()
     : m_window(
         sf::VideoMode(
@@ -199,18 +200,13 @@ void Game::update()
 
     case GameState::Destroying:
     {
-        int gained =
-            BoardProcessor::destroyMarkedCells(
-                m_board,
-                m_animationManager
-            );
-
+        int gained = BoardProcessor::destroyMarkedCells(
+            m_board,
+            m_animationManager
+        );
         m_scoreManager.addPoints(gained);
-
         startFallAnimations();
-
         m_state = GameState::Falling;
-
         break;
     }
 

@@ -2,10 +2,12 @@
 
 #include "Gem.h"
 
+#include <cstdio>
+
+
 class RecolorBonusGem : public Gem {
 public:
-	RecolorBonusGem(GemColor color)
-		: Gem(color) {}
+	RecolorBonusGem(GemColor color) : Gem(color) {}
 
 	bool isBonus() const override { return true; }
 

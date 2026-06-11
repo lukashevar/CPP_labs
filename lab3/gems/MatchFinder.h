@@ -6,6 +6,7 @@
 class MatchFinder {
 public:
 	static bool findMatches(Board& board);
+	static bool hasMarkedCells(const Board& board);
 
 private:
 	static void clearMarks(Board& board);

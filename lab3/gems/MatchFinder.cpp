@@ -23,14 +23,18 @@ bool MatchFinder::findHorizontalMatches(Board& board) {
             if (startCell.isEmpty()) { ++startCol; continue; }
 
             GemColor color = startCell.getGem()->getColor();
-            int endCol = startCol;
 
+            if (color == GemColor::Black) {
+                ++startCol;
+                continue;
+            }
+
+            int endCol = startCol;
             while (endCol < board.getCols()) {
                 const Cell& c = board.getCell(row, endCol);
                 if (c.isEmpty() || c.getGem()->getColor() != color) break;
                 ++endCol;
             }
-
             if (endCol - startCol >= 3) {
                 found = true;
                 for (int col = startCol; col < endCol; ++col)
@@ -51,14 +55,18 @@ bool MatchFinder::findVerticalMatches(Board& board) {
             if (startCell.isEmpty()) { ++startRow; continue; }
 
             GemColor color = startCell.getGem()->getColor();
-            int endRow = startRow;
 
+            if (color == GemColor::Black) {
+                ++startRow;
+                continue;
+            }
+
+            int endRow = startRow;
             while (endRow < board.getRows()) {
                 const Cell& c = board.getCell(endRow, col);
                 if (c.isEmpty() || c.getGem()->getColor() != color) break;
                 ++endRow;
             }
-
             if (endRow - startRow >= 3) {
                 found = true;
                 for (int row = startRow; row < endRow; ++row)
